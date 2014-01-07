@@ -33,6 +33,13 @@ class Post extends Eloquent {
     {
         parent::boot();
 
+        Post::created(function($post){
+
+            $tags = array_values(Input::get('tags', array()));
+            $post->tags()->sync($tags);
+
+        });
+
         Post::creating(function($post)
         {
             $post->slug = Str::slug($post->title);
@@ -42,6 +49,13 @@ class Post extends Eloquent {
             if($count > 0)
                 $post->slug = $post->slug .= ($count + 1);
 
+            $category = Category::find(Input::get('category_id'));
+
+            // Attach category
+            $post->category()->associate($category);
+
         });
+
+
     }
 }

@@ -37,7 +37,7 @@
     <div class="form-group @if($errors->has('user_id'))has-error@endif">
         {{ Form::label('user_id', 'Author') }}
         {{ Form::select('user_id',
-            User::lists('username', 'id') ,
+            User::lists('name', 'id') ,
             Form::getValueAttribute('user_id'),
             array('class' => 'form-control'))
         }}

@@ -44,14 +44,12 @@ class PostsController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
+		$input = array_except(Input::all(), '_method');
 		$validation = Validator::make($input, Post::$rules);
 
 		if ($validation->passes())
 		{
-			$this->post->tags->sync(Input::get('tags'));
-			$this->post->create($input);
-
+			$this->post = $this->post->create($input);
 			return Redirect::route('posts.index');
 		}
 
@@ -106,8 +104,6 @@ class PostsController extends BaseController {
 		if ($validation->passes())
 		{
 			$post = $this->post->find($id);
-			$tags = array_values(Input::get('tags'));
-			$post->tags()->sync($tags);
 			$post->update($input);
 
 			return Redirect::route('posts.show', $id);

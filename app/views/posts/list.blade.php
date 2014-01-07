@@ -9,7 +9,7 @@
 
         <a href="#" class="btn btn-danger">
             <i class="fa fa-trash-o"></i>
-            Deleted
+            Deleted posts
         </a>
 
     </p>
@@ -36,7 +36,9 @@
                 <td> {{ date('d-m-Y', $post->updated_at->timestamp)}} </td>
                 <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Action</button>
+                      <button type="button" class="btn btn-primary">
+                      <i class="fa fa-cogs"></i>
+                      </button>
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>

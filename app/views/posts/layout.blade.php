@@ -18,6 +18,14 @@
 
         $('.select_multiple').chosen({allow_single_deselect:true});
         $('select.chosen').chosen({allow_single_deselect:true});
+
+        $('[data-confirm]').on('click', function(e){
+
+            e.preventDefault();
+
+            if(confirm($(this).data('confirm')))
+                $(this).parent('form').submit();
+        });
     });
 
     </script>

@@ -13,7 +13,7 @@ class TagsTableSeeder extends Seeder {
                 'slug' => Str::slug('code')
                 ),
             array(
-                'name' => Str::slug('Agile'),
+                'name' => 'Agile',
                 'slug' => Str::slug('Agile')
                 )
 		);
