@@ -1,18 +1,17 @@
 <?php
 
-class PostsController extends BaseController {
+class CategoriesController extends BaseController {
 
 	/**
-	 * Post Repository
+	 * Category Repository
 	 *
-	 * @var Post
+	 * @var Category
 	 */
-	protected $post;
+	protected $category;
 
-	public function __construct(Post $post)
+	public function __construct(Category $category)
 	{
-		$this->post = $post;
-	   	$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->category = $category;
 	}
 
 	/**
@@ -22,9 +21,9 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = $this->post->all();
+		$categories = $this->category->all();
 
-		return View::make('posts.index', compact('posts'));
+		return View::make('categories.index', compact('categories'));
 	}
 
 	/**
@@ -34,7 +33,7 @@ class PostsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('posts.create', ['post' => new Post]);
+		return View::make('categories.create');
 	}
 
 	/**
@@ -44,16 +43,17 @@ class PostsController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Post::$rules);
+		$input = Input::all();
+		$validation = Validator::make($input, Category::$rules);
 
 		if ($validation->passes())
 		{
-			$this->post = $this->post->create($input);
-			return Redirect::route('posts.index');
+			$this->category->create($input);
+
+			return Redirect::route('categories.index');
 		}
 
-		return Redirect::route('posts.create')
+		return Redirect::route('categories.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class PostsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$post = $this->post->findOrFail($id);
+		$category = $this->category->findOrFail($id);
 
-		return View::make('posts.show', compact('post'));
+		return View::make('categories.show', compact('category'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class PostsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$post = $this->post->find($id);
+		$category = $this->category->find($id);
 
-		if (is_null($post))
+		if (is_null($category))
 		{
-			return Redirect::route('posts.index');
+			return Redirect::route('categories.index');
 		}
 
-		return View::make('posts.edit', compact('post'));
+		return View::make('categories.edit', compact('category'));
 	}
 
 	/**
@@ -99,18 +99,18 @@ class PostsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Post::$rules);
+		$validation = Validator::make($input, Category::$rules);
 
 		if ($validation->passes())
 		{
-			$post = $this->post->find($id);
-			$post->update($input);
+			$category = $this->category->find($id);
+			$category->update($input);
 
-			return Redirect::route('posts.show', $id)
-						->with('success', 'Post updated.');
+			return Redirect::route('categories.show', $id)
+							->with('success', 'Category Updated.');
 		}
 
-		return Redirect::route('posts.edit', $id)
+		return Redirect::route('categories.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -124,9 +124,9 @@ class PostsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->post->find($id)->delete();
+		$this->category->find($id)->delete();
 
-		return Redirect::route('posts.index');
+		return Redirect::route('categories.index');
 	}
 
 }

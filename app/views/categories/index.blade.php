@@ -1,5 +1,5 @@
 @extends('layouts.scaffold')
 
 @section('content')
-        @include('users.list')
+        @include('categories.list')
 @stop

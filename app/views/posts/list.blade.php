@@ -1,21 +1,20 @@
-    <h1>Posts</h1>
+<h1>Posts</h1>
 
-    <p>
+<p>
+    <a href="{{ route('posts.create') }}" class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+        New Post
+    </a>
 
-        <a href="{{ route('posts.create') }}" class="btn btn-primary">
-            <i class="fa fa-plus"></i>
-            New Post
-        </a>
+    <a href="#" class="btn btn-danger">
+        <i class="fa fa-trash-o"></i>
+        Trash
+    </a>
 
-        <a href="#" class="btn btn-danger">
-            <i class="fa fa-trash-o"></i>
-            Deleted posts
-        </a>
-
-    </p>
-    @if ($posts->count())
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
+</p>
+@if ($posts->count())
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Title</th>
@@ -23,6 +22,7 @@
                 <th>Category</th>
                 <th>Created At</th>
                 <th>Last Update</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -37,7 +37,7 @@
                 <td>
                     <div class="btn-group">
                       <button type="button" class="btn btn-primary">
-                      <i class="fa fa-cogs"></i>
+                          <i class="fa fa-cogs"></i>
                       </button>
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
@@ -61,7 +61,7 @@
         @endforeach
     </tbody>
 </table>
-    </div>
+</div>
 
 @else
 There are no posts

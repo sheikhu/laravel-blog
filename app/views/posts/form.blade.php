@@ -47,8 +47,8 @@
 
 
 
+
 <div class="form-group @if($errors->has('content'))has-error@endif">
-    {{ Form::label('content', 'Content') }}
     {{ Form::textarea('content', Form::getValueAttribute('content'), ['class' => 'form-control redactor']) }}
     {{ $errors->first('content', '<span class="help-block">:message</span>
     ')}}
@@ -58,18 +58,21 @@
 <div class="form-group">
     {{ Form::label('tags[]', 'Tags')}}
     {{
-    Form::select('tags[]', Tag::lists('name', 'id'), $post->tags->lists('id'), array('multiple' => true, 'class' => 'chosen form-control'))
+        Form::select('tags[]', Tag::lists('name', 'id'), $post->tags->lists('id'), array('multiple' => true, 'class' => 'chosen form-control'))
     }}
-
 </div>
 
+
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">
+    <i class="fa fa-check"></i> Valider
+    </button>
+</div>
+
+
+
 {{ Form::token()}}
-
-
-
-
-{{ Form::submit('Submit', ['class' => 'btn btn-info']) }}
-
 
 
 {{ Form::close() }}

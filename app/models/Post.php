@@ -33,9 +33,10 @@ class Post extends Eloquent {
     {
         parent::boot();
 
-        Post::created(function($post){
+        Post::saved(function($post){
 
             $tags = array_values(Input::get('tags', array()));
+
             $post->tags()->sync($tags);
 
         });

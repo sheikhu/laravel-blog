@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 
-@section('main')
+@section('container')
 
 <h1>Edit User</h1>
 {{ Form::model($user, array('method' => 'PATCH', 'route' => array('users.update', $user->id))) }}

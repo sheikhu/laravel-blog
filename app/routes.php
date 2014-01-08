@@ -40,3 +40,8 @@ Route::resource('posts', 'PostsController');
 
 
 Route::resource('users', 'UsersController');
+
+
+Route::resource('categories', 'CategoriesController');
+
+Route::resource('tags', 'TagsController');

@@ -1,13 +1,17 @@
-@extends('posts.layout')
+@extends('layouts.scaffold')
 
-@section('container')
+@section('content')
 
 <div class="row">
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>
+    {{ $post->title }}
+    </h1>
+    <b>Category</b> <i class="fa fa-arrow-circle-right"></i>
+    {{ $post->category->name }}
+
         <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title entry-title"> {{ $post->title }}</h1>
-        </div>
+
         <div class="panel-body">
             {{ $post->content }}
         </div>
@@ -27,7 +31,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
                 @foreach ($post->tags as $tag)
-                <li><a href="#">{{ $tag->name }}</a></li>
+                <li><a href="{{ route('tags.show', array($tag->id))}}">{{ $tag->name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -41,12 +45,12 @@
             </div>
         </div>
     </div>
+{{ link_to_route('posts.index', 'Return to all posts', [], array('class' => 'btn btn-primary')) }}
 
-    {{ link_to_route('posts.index', 'Return to all posts', [], array('class' => 'btn btn-primary')) }}
-
-
-
-
+</div>
+</div>
 
 
-    @stop
+
+
+@stop

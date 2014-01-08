@@ -1,18 +1,17 @@
 <?php
 
-class PostsController extends BaseController {
+class TagsController extends BaseController {
 
 	/**
-	 * Post Repository
+	 * Tag Repository
 	 *
-	 * @var Post
+	 * @var Tag
 	 */
-	protected $post;
+	protected $tag;
 
-	public function __construct(Post $post)
+	public function __construct(Tag $tag)
 	{
-		$this->post = $post;
-	   	$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->tag = $tag;
 	}
 
 	/**
@@ -22,9 +21,9 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = $this->post->all();
+		$tags = $this->tag->all();
 
-		return View::make('posts.index', compact('posts'));
+		return View::make('tags.index', compact('tags'));
 	}
 
 	/**
@@ -34,7 +33,7 @@ class PostsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('posts.create', ['post' => new Post]);
+		return View::make('tags.create');
 	}
 
 	/**
@@ -44,16 +43,17 @@ class PostsController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Post::$rules);
+		$input = Input::all();
+		$validation = Validator::make($input, Tag::$rules);
 
 		if ($validation->passes())
 		{
-			$this->post = $this->post->create($input);
-			return Redirect::route('posts.index');
+			$this->tag->create($input);
+
+			return Redirect::route('tags.index');
 		}
 
-		return Redirect::route('posts.create')
+		return Redirect::route('tags.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class PostsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$post = $this->post->findOrFail($id);
+		$tag = $this->tag->findOrFail($id);
 
-		return View::make('posts.show', compact('post'));
+		return View::make('tags.show', compact('tag'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class PostsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$post = $this->post->find($id);
+		$tag = $this->tag->find($id);
 
-		if (is_null($post))
+		if (is_null($tag))
 		{
-			return Redirect::route('posts.index');
+			return Redirect::route('tags.index');
 		}
 
-		return View::make('posts.edit', compact('post'));
+		return View::make('tags.edit', compact('tag'));
 	}
 
 	/**
@@ -99,18 +99,17 @@ class PostsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, Post::$rules);
+		$validation = Validator::make($input, Tag::$rules);
 
 		if ($validation->passes())
 		{
-			$post = $this->post->find($id);
-			$post->update($input);
+			$tag = $this->tag->find($id);
+			$tag->update($input);
 
-			return Redirect::route('posts.show', $id)
-						->with('success', 'Post updated.');
+			return Redirect::route('tags.show', $id);
 		}
 
-		return Redirect::route('posts.edit', $id)
+		return Redirect::route('tags.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -124,9 +123,9 @@ class PostsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->post->find($id)->delete();
+		$this->tag->find($id)->delete();
 
-		return Redirect::route('posts.index');
+		return Redirect::route('tags.index');
 	}
 
 }
