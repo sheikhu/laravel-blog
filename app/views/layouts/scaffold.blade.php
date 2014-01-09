@@ -40,7 +40,7 @@ HTML::macro('listItem', function($params){
 @endif
 @endforeach
 <div class="row">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 aside">
         <h1><a href="#"> Hello, Sheikhu </a></h1>
 
         <div class="list-group">

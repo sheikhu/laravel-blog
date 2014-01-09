@@ -9,13 +9,14 @@ class CategoriesTableSeeder extends Seeder {
 
         $categories = [
         [
-            'name' => 'Php',
-            'slug' =>  Str::slug('Php'),
+        'name' => 'Php',
+        'slug' =>  Str::slug('Php'),
         ],
         [
-            'name' => 'Laravel 4',
-            'slug' => Str::slug('Laravel 4'),
-        ]
+        'name' => 'Laravel 4',
+        'slug' => Str::slug('Laravel 4'),
+        ],
+        array('name' => 'Symfony 2', 'slug' => Str::slug('Symfony 2'))
         ];
 
         // Uncomment the below to run the seeder

@@ -11,14 +11,11 @@
 |
 */
 
-Route::get('/test', function()
-{
-    return App::environment();
-});
 
 Route::get('/', array('as' => 'home', function()
 {
-    return View::make('home', ['posts' => Post::all()]);
+    $posts = Post::paginate(1);
+    return View::make('home', ['posts' => $posts]);
 }));
 
 Route::get('/me', array('as' => 'me', function(){
@@ -26,22 +23,20 @@ Route::get('/me', array('as' => 'me', function(){
     return View::make('about');
 }));
 
-Route::post('/', ['as' => 'send_mail', function()
-{
-  Mail::queue('emails.welcome', ['username' => Input::get('username','Sheikhu')], function($message) {
-    $message->to('sheikhu02@gmail.com', 'Sheikhu')->subject('Welcome to the Laravel 4 Auth App!');
-});
-
-  return Redirect::to('/welcome')->with('message', 'Message envoyé avec succès !.');
-}]);
-
-
 Route::resource('posts', 'PostsController');
 
-
 Route::resource('users', 'UsersController');
-
 
 Route::resource('categories', 'CategoriesController');
 
 Route::resource('tags', 'TagsController');
+
+Route::group(array('prefix' => 'blog'), function(){
+
+    Route::get('{slug}', 'HomeController@showPost');
+
+    Route::get('tag/{tag}', 'HomeController@showByTag');
+
+
+});
+?>

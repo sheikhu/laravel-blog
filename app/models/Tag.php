@@ -5,7 +5,7 @@ class Tag extends Eloquent {
     protected $guarded = array();
 
 	public static $rules = array(
-            'name'  =>  'required|unique:tags,name'
+            'name'  =>  'required|unique:tags'
         );
 
     public $timestamps = false;
@@ -20,8 +20,7 @@ class Tag extends Eloquent {
         parent::boot();
 
         Tag::saving(function($tag){
-
-            $tag->slug = Str::slug($tag->title);
+            $tag->slug = Str::slug($tag->name);
         });
     }
 }

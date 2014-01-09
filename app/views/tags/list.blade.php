@@ -1,9 +1,9 @@
-<h1>All Tags</h1>
+<h1>Tags</h1>
 
 <p>
     <a href="{{ route('tags.create') }}" class="btn btn-primary">
         <i class="fa fa-plus"></i>
-        Add new tag
+        New tag
     </a>
 
 </p>
@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Slug</th>
             </tr>
         </thead>
 
@@ -21,6 +22,7 @@
             @foreach ($tags as $tag)
             <tr>
                 <td>{{{ $tag->name }}}</td>
+                <td>{{{ $tag->slug }}}</td>
 
                 <td>
                     <div class="btn-group">

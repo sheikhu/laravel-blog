@@ -21,8 +21,10 @@ class Category extends Eloquent {
     {
         parent::boot();
 
-        Category::creating(function($category)
+        Category::saving(function($category)
         {
+            if($category->slug)
+                return;
             $category->slug = Str::slug($category->name);
 
         });

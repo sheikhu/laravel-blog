@@ -59,6 +59,7 @@
 
         .bg-white{background-color: #FFF;}
         .no-border{border-width: 0px 0px 0px 0px;}
+        .dark-bg{background-color: #191918;}
         /*.jumbotron h1{color: #FFF;}*/
       </style>
     </head>
@@ -67,24 +68,24 @@
 
 
       <!-- Static navbar -->
-      <div class="navbar navbar-default navbar-fixed-top bg-white">
+      <div class="navbar navbar-default navbar-fixed-top dark-bg">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{{ URL::to('/')}}">
             <i class="fa fa-bullhorn"></i>
             404 Ads</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-              <li class="active"><a href="#">Accueil</a></li>
-              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Accueil</a></li>
+              <li class="active"><a href="#">Portfolio</a></li>
               <li>
                 <a href="{{ route('posts.index')}}">
-                  <i class="fa fa-pencil"></i> Blog
+                  Blog
                 </a>
               </li>
               <li><a href="#">Contact</a></li>

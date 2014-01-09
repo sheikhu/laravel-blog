@@ -17,7 +17,7 @@
     <div class="form-group @if($errors->has('title'))has-error@endif">
 
         {{ Form::label('title', 'Title') }}
-        {{ Form::text('title', Form::getValueAttribute('title'), ['class' => 'form-control']) }}
+        {{ Form::text('title', Input::old('title'), ['class' => 'form-control']) }}
         {{ $errors->first('title', '<span class="help-block">:message</span>
         ') }}
     </div>
@@ -26,7 +26,7 @@
     <div class="form-group @if($errors->has('category_id'))has-error@endif">
         {{ Form::label('category_id', 'Category') }}
         {{ Form::select('category_id', Category::lists('name','id'),
-            Form::getValueAttribute('category_id'),
+            Input::old('category_id'),
             array('class' => 'form-control'))
         }}
         {{ $errors->first('category_id', '<span class="help-block">:message</span>
@@ -38,7 +38,7 @@
         {{ Form::label('user_id', 'Author') }}
         {{ Form::select('user_id',
             User::lists('name', 'id') ,
-            Form::getValueAttribute('user_id'),
+            Input::old('user_id'),
             array('class' => 'form-control'))
         }}
     </div>

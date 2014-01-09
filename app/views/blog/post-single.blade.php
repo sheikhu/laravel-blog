@@ -1,17 +1,20 @@
 <div class="blog-post">
     <h1 class="blog-post-title entry-title">
-    <a href="{{ action('HomeController@showPost', $post->slug)}}">
         {{ $post->title }}
-    </a>
     </h1>
     <p class="blog-post-meta">
-        {{ date('m d, Y', $post->created_at->timestamp) }} by <a href="#">{{ $post->user->name }}</a>
+        {{ date('m d, Y', $post->created_at->timestamp) }} by
+        <span class="label label-info">
+            {{ $post->user->name }}
+        </span>
     </p>
     <div class="row">
 
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             Category <i class="fa fa-arrow-circle-right fa-border"></i>
+            <a href="{{ route('HomeController@showByTag', $post->category->slug)}}">
             <span class="badge">{{ $post->category->name}}</span>
+            </a>
         </div>
 
         <p class="pull-right">

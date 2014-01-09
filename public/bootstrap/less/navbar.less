@@ -128,7 +128,7 @@
   position: fixed;
   right: 0;
   left: 0;
-  border-width: 0 0 1px;
+  border-width: 0 0 0px;
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -384,6 +384,7 @@
       &:focus {
         color: @navbar-default-link-active-color;
         background-color: @navbar-default-link-active-bg;
+        border-bottom: 4px solid #FFF;
       }
     }
     > .disabled > a {

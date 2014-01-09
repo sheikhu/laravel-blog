@@ -18,16 +18,18 @@ class PostsTableSeeder extends Seeder {
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             'slug'    =>  Str::slug('Hello World'),
             'user_id' =>  User::first()->id,
-            'category_id' => Category::whereName('Php')->first()->id
+            'category_id' => Category::whereName('Php')->first()->id,
+            'created_at' => new DateTime,
+            'updated_at' => new DateTime
             ]
         ];
 
 		// Uncomment the below to run the seeder
 		foreach ($posts as $post) {
             $tag = DB::table('tags')->orderBy('RAND()')->first();
-            $post = Post::create($post);
+            $id = DB::table('posts')->insert($post);
 
-            $post->tags()->attach($tag->id);
+            Post::find($id)->tags()->attach($tag->id);
         }
 
         $this->command->info('Posts table seeded !');
