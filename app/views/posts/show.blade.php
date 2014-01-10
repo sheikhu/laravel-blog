@@ -13,7 +13,18 @@
         <div class="panel panel-default">
 
         <div class="panel-body">
-            {{ $post->content }}
+            <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <p class="justify">
+                {{ $post->content }}
+            </p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <a href="{{ asset($post->image->url) }}" class="thumbnail">
+            <img class="img-responsive" src="{{ asset($post->image->url) }}" alt="">
+        </a>
+    </div>
+            </div>
         </div>
         <div class="panel-footer">
 
@@ -46,6 +57,11 @@
         </div>
     </div>
 {{ link_to_route('posts.index', 'Return to all posts', [], array('class' => 'btn btn-primary')) }}
+
+</div>
+
+
+
 
 </div>
 </div>

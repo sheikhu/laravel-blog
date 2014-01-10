@@ -12,6 +12,8 @@
 </div>
 </div>
 
+
+{{ Former::text('name')}}
 <div class="row">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="form-group @if($errors->has('title'))has-error@endif">

@@ -1,5 +1,6 @@
 <h1>Posts</h1>
 
+
 <p>
     <a href="{{ route('posts.create') }}" class="btn btn-primary">
         <i class="fa fa-plus"></i>

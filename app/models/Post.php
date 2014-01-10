@@ -11,7 +11,7 @@ class Post extends Eloquent {
         'content'     =>    'required|min:10',
         'user_id'     =>    'exists:users,id',
         'category_id' =>    'exists:categories,id',
-        'image'       =>    'image, mimes:jpeg,png,jpg'
+        'image'       =>    'image'
 	);
 
 
@@ -65,7 +65,7 @@ class Post extends Eloquent {
 
         });
 
-        Post::saved(function($post){
+        Post::created(function($post){
 
             // Attach image
 
@@ -78,20 +78,68 @@ class Post extends Eloquent {
 
             $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
 
-            $success = $image->move($path, $fileName);
+            $fullPath = $path . '/' . $fileName;
+            $success = Imager::make($image->getRealPath())
+                                ->resize(300, 200)
+                                ->save($fullPath);
+
 
             if($success)
             {
                 $image = new Image(array(
-                    'name' => uniqid() ,
-                    'url' => $fileName,
+                    'name' => $fileName ,
+                    'url' => $fullPath,
                     'slug' => uniqid()
                     ));
                 $post->image()->save($image);
             }
         });
 
+        Post::saved(function($post){
 
+
+            // if(File::exists($post->url))
+            //     exit('ok');
+            // else
+            //     exit('nope');
+            if(!Input::file('image'))
+                return;
+
+            $image = Input::file('image');
+
+            $path = 'uploads';
+
+            $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+            $fullPath = $path . '/' . $fileName;
+            $success = Imager::make($image->getRealPath())
+                                ->resize(300, 200)
+                                ->save(base_path() . '/public/' .$fullPath);
+
+
+
+            if($success)
+            {
+                if($post->image)
+                {
+                    $image = $post->image;
+                    if(File::exists(public_path() . '/' .$image->url))
+                        File::delete(public_path() . '/' .$image->url);
+
+                    $image->url = $fullPath;
+                } else {
+                $image = new Image(array(
+                    'name' => $fileName ,
+                    'url' => $fullPath,
+                    'slug' => uniqid()
+                    ));
+
+                }
+
+                $post->image()->save($image);
+            }
+        });
 
     }
+
+
 }

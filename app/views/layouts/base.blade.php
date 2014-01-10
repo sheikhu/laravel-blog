@@ -36,7 +36,7 @@
 
       <style type="text/css">
         body{
-          padding-top: 81px;
+          padding-top: 84px;
           background-color: #F1F1F1;
           /*background-image: url("{{ asset('images/bg.png') }} ");*/
           font-size: 18px;
