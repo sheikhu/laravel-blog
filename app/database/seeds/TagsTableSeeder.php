@@ -1,30 +1,30 @@
 <?php
 
-class CategoriesTableSeeder extends Seeder {
+class TagsTableSeeder extends Seeder {
 
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
-        DB::table('categories')->truncate();
+        DB::table('tags')->truncate();
 
-        $categories = [
+        $tags = [
         [
-            'name' => 'Php',
-            'slug' =>  Str::slug('Php'),
+            'name' => 'Code',
+            'slug' =>  Str::slug('Code'),
         ],
         [
-            'name' => 'Laravel 4',
-            'slug' => Str::slug('Laravel 4'),
+            'name' => 'Agile',
+            'slug' => Str::slug('Agile'),
         ],
-        array('name' => 'Symfony 2', 'slug' => Str::slug('Symfony 2'))
+        array('name' => 'Framework', 'slug' => Str::slug('Framework'))
         ];
 
         // Uncomment the below to run the seeder
-        foreach ($categories as $category) {
-            Category::create($category);
+        foreach ($tags as $tag) {
+            Tag::create($tag);
         }
 
-        $this->command->info('Category table seeded !');
+        $this->command->info('Tags table seeded !');
     }
 
 }

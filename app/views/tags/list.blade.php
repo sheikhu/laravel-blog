@@ -6,6 +6,11 @@
         New tag
     </a>
 
+    <a href="#" class="btn btn-danger">
+        <i class="fa fa-trash-o"></i>
+        Trash
+    </a>
+
 </p>
 
 @if ($tags->count())

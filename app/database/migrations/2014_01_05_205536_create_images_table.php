@@ -17,6 +17,9 @@ class CreateImagesTable extends Migration {
 			$table->increments('id');
 			$table->string('name', 128);
 			$table->string('slug')->unique();
+			$table->string('url')->unique();
+			$table->integer('owner_id');
+			$table->string('owner_type');
 			$table->timestamps();
 		});
 	}

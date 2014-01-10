@@ -1,4 +1,4 @@
-{{ Form::model($post, array('method' => $method, 'route' => $route, 'class' => 'form-vertical')) }}
+{{ Form::model($post, array('files' => true, 'method' => $method, 'route' => $route, 'class' => 'form-vertical')) }}
 
 
 <div class="row">
@@ -63,6 +63,10 @@
 </div>
 
 
+<div class="form-group">
+    {{ Form::label('image', 'Image')}}
+    {{ Form::file('image')}}
+</div>
 
 <div class="form-group">
     <button type="submit" class="btn btn-primary">

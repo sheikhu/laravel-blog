@@ -12,7 +12,7 @@ class Tag extends Eloquent {
 
     public function posts()
     {
-        return $this->belongsToMany('Post');
+        return $this->morphedByMany('Post', 'taggable');
     }
 
     public static function boot()

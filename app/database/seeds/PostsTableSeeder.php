@@ -29,7 +29,7 @@ class PostsTableSeeder extends Seeder {
             $tag = DB::table('tags')->orderBy('RAND()')->first();
             $id = DB::table('posts')->insert($post);
 
-            Post::find($id)->tags()->attach($tag->id);
+            Post::find($id)->tags()->save(Tag::find($tag->id));
         }
 
         $this->command->info('Posts table seeded !');

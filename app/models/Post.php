@@ -10,7 +10,8 @@ class Post extends Eloquent {
         'title'       =>    'required:min:5',
         'content'     =>    'required|min:10',
         'user_id'     =>    'exists:users,id',
-        'category_id' =>    'exists:categories,id'
+        'category_id' =>    'exists:categories,id',
+        'image'       =>    'image, mimes:jpeg,png,jpg'
 	);
 
 
@@ -27,7 +28,12 @@ class Post extends Eloquent {
 
     public function tags()
     {
-        return $this->belongsToMany('Tag');
+        return $this->morphToMany('Tag', 'taggable');
+    }
+
+    public function image()
+    {
+        return $this->morphOne('Image', 'owner');
     }
 
     public static function boot()
@@ -56,7 +62,35 @@ class Post extends Eloquent {
             // Attach category
             $post->category()->associate($category);
 
+
         });
+
+        Post::saved(function($post){
+
+            // Attach image
+
+            if(!Input::file('image'))
+                return;
+
+            $image = Input::file('image');
+
+            $path = public_path() . '/uploads';
+
+            $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+
+            $success = $image->move($path, $fileName);
+
+            if($success)
+            {
+                $image = new Image(array(
+                    'name' => uniqid() ,
+                    'url' => $fileName,
+                    'slug' => uniqid()
+                    ));
+                $post->image()->save($image);
+            }
+        });
+
 
 
     }

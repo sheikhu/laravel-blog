@@ -9,7 +9,7 @@
 
         <a href="#" class="btn btn-danger">
             <i class="fa fa-trash-o"></i>
-            Deleted users
+            Trash
         </a>
 
     </p>

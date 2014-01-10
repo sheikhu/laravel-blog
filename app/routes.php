@@ -11,7 +11,10 @@
 |
 */
 
+Route::get('/test', function(){
 
+    return Image::all();
+});
 Route::get('/', array('as' => 'home', function()
 {
     $posts = Post::paginate(1);

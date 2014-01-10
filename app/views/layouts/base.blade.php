@@ -80,7 +80,7 @@
             404 Ads</a>
           </div>
           <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav">
               <li><a href="#">Accueil</a></li>
               <li class="active"><a href="#">Portfolio</a></li>
               <li>
