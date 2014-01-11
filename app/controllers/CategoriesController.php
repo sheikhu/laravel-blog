@@ -33,7 +33,7 @@ class CategoriesController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('categories.create');
+		return View::make('categories.create', ['category' => new Category]);
 	}
 
 	/**

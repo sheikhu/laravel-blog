@@ -34,6 +34,9 @@ Route::resource('categories', 'CategoriesController');
 
 Route::resource('tags', 'TagsController');
 
+Route::resource('photos', 'PhotosController');
+
+
 Route::group(array('prefix' => 'blog'), function(){
 
     Route::get('{slug}', 'HomeController@showPost');

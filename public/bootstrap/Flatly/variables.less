@@ -11,6 +11,7 @@
 
 @gray-darker:            lighten(#000, 13.5%); // #222
 @gray-dark:              #7b8a8b;
+@custom-dark:            #485050;
 @gray:                   #95a5a6;
 @gray-light:             #b4bcc2;
 @gray-lighter:           #ecf0f1;
@@ -18,11 +19,12 @@
 // Brand colors
 // -------------------------
 
-@brand-primary:         #227293;
+@brand-primary:         #0D7963;
 @brand-success:         #1AAF92;
 @brand-warning:         #F39C12;
 @brand-danger:          #E74C3C;
-@brand-info:            #3498DB;
+@brand-info:            #4E6778;
+
 
 // Scaffolding
 // -------------------------
@@ -274,9 +276,9 @@
 // Navbar links
 @navbar-default-link-color:                @navbar-default-color;
 @navbar-default-link-hover-color:          darken(@navbar-default-color, 20%);
-@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-hover-bg:             darken(@brand-primary, 5%);
 @navbar-default-link-active-color:         lighten(@navbar-default-color, 20%);
-@navbar-default-link-active-bg:            transparent;
+@navbar-default-link-active-bg:            darken(@brand-primary, 10%);
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
 @navbar-link-font-size:                    18px;

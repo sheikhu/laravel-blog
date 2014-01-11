@@ -1,8 +1,8 @@
-@extends('posts.layout')
+@extends('layouts.scaffold')
 
-@section('container')
+@section('content')
 
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 <h1 class="entry-title">Edit Post</h1>
     @include('posts.form', array('method' => 'PATCH', 'route' => array('posts.update', $post->id)) )
 </div>

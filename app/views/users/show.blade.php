@@ -26,9 +26,9 @@
      </table>
 
 
-     {{ link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-info')) }}
+     {{ link_to_route('users.edit', 'Edit', array($user->id), array('class' => 'btn btn-primary')) }}
 
-     {{ link_to_route('users.edit', 'Edit Password', array($user->id), array('class' => 'btn btn-warning')) }}
+     {{ link_to_route('users.edit', 'Edit Password', array($user->id), array('class' => 'btn btn-info')) }}
 
      {{ Form::open(array('method' => 'DELETE', 'route' => array('users.destroy', $user->id), 'class' => 'pull-right')) }}
      {{ Form::submit('Delete',

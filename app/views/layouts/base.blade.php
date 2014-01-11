@@ -59,7 +59,9 @@
 
         .bg-white{background-color: #FFF;}
         .no-border{border-width: 0px 0px 0px 0px;}
-        .dark-bg{background-color: #191918;}
+        .dark-bg{background-color: #0D7963;}
+
+        .bottom-border{ border-bottom: 1px solid #227293; }
         /*.jumbotron h1{color: #FFF;}*/
       </style>
     </head>

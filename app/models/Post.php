@@ -40,11 +40,9 @@ class Post extends Eloquent {
     {
         parent::boot();
 
-        Post::saved(function($post){
+        Post::saving(function($post){
 
-            $tags = array_values(Input::get('tags', array()));
-
-            $post->tags()->sync($tags);
+            $post->title = Str::title($post->title);
 
         });
 
@@ -97,6 +95,9 @@ class Post extends Eloquent {
 
         Post::saved(function($post){
 
+            $tags = array_values(Input::get('tags', array()));
+
+            $post->tags()->sync($tags);
 
             // if(File::exists($post->url))
             //     exit('ok');

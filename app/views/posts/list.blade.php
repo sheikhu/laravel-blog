@@ -1,4 +1,4 @@
-<h1>Posts</h1>
+<h1 class="entry-title">Posts</h1>
 
 
 <p>
