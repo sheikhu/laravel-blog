@@ -63,4 +63,11 @@ class HomeController extends BaseController {
 		return View::make('auth.login');
 	}
 
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::route('home');
+	}
+
 }

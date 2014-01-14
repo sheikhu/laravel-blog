@@ -60,9 +60,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Post');
 	}
 
-	public function getKeyName()
-	{
-		return $this->username;
-	}
-
 }

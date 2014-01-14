@@ -27,7 +27,7 @@
   @show
 
   <!-- Custom styles for this template -->
-  <link href="navbar.css" rel="stylesheet">
+
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -38,16 +38,11 @@
     </head>
 
     <body>
+@section('navbar')
+  @include('layouts.partials.navbar')
+@show
 
-
-    @section('navbar')
-      @include('layouts.partials.navbar')
-    @show
-
-
-
-
-
+@section('body')
 
         <div id="master-container" class="container">
           @yield('container')
@@ -59,7 +54,9 @@
 
 
 
-    <!-- Bootstrap core JavaScript
+
+@show
+<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     @section('scripts')
@@ -69,28 +66,7 @@
     {{ HTML::script('vendors/redactor/redactor/redactor.min.js')}}
     <script>
       $(function() {
-
-      /*
-      var current = 'navbar-static-top';
-
-      $('ul.navbar-nav li a').on('click', function(e){
-        alert(current);
-        if($('.navbar').hasClass(current))
-        {
-          e.preventDefault();
-          $('.navbar').removeClass(current).addClass($(this).attr('id'));
-          current = $(this).attr('id');
-
-          $(this).parents().removeClass('active');
-          $(this).parent().addClass('active');
-
-        }
-
-      });
-      */
-
       $('.redactor').redactor({autoresize: false});
-
     });
   </script>
 

@@ -2,7 +2,7 @@
 
 
 <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6">
       @if (Session::has('message'))
       <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -58,10 +58,16 @@
 
 
 <div class="form-group">
+<div class="row">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
     {{ Form::label('tags[]', 'Tags')}}
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
     {{
         Form::select('tags[]', Tag::lists('name', 'id'), $post->tags->lists('id'), array('multiple' => true, 'class' => 'chosen form-control'))
     }}
+    </div>
+</div>
 </div>
 
 

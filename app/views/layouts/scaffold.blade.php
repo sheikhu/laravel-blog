@@ -1,57 +1,47 @@
 @extends('layouts.base')
+
 @section('styles')
-
-
-{{ HTML::style('vendors/chosen/chosen.css') }}
-@parent
-
+    @parent
+    {{ HTML::style('css/admin.css')}}
 @stop
 
+@section('body')
 
-@section('container')
+<div id="wrapper">
 
-@foreach (array('success', 'warning', 'danger') as $key)
-    @if (Session::has($key))
-<div class="alert alert-{{$key}}">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>{{ Str::title($key) }} ! </strong> {{ Session::get($key) }}
-</div>
-@endif
-@endforeach
-<div class="row-fluid">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 aside">
-        <h2><a href="#"> Hello, Sheikhu </a></h2>
+
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
         @include('layouts.partials.admin_sidebar')
-</div>
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-    @yield('content')
-</div>
+      </div>
 
-</div>
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+                @yield('content')
+            </div>
+
+      </div>
+
+    </div>
+
 @stop
 
-@section('footer')
-@stop
 @section('scripts')
-
-@parent
-{{ HTML::script('vendors/chosen/chosen.jquery.min.js') }}
-
-<script>
-    $(function () {
-
-        $('.select_multiple').chosen({allow_single_deselect:true});
-        $('select.chosen').chosen({allow_single_deselect:true});
-
-        $('[data-confirm]').on('click', function(e){
+    @parent
+    <script>
+    $('[data-confirm]').on('click', function(e){
 
             e.preventDefault();
 
             if(confirm($(this).data('confirm')))
                 $(this).parent('form').submit();
-        });
+            $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
     });
+        });
 
-</script>
-
-@stop
+    </script>
+    @stop

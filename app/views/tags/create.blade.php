@@ -1,4 +1,4 @@
-@extends('layouts.scaffold')
+@extends('tags.layout')
 
 @section('content')
 

@@ -1,18 +1,25 @@
-@extends('layouts.scaffold')
+@extends('posts.layout')
 
 @section('content')
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <h2>
-            {{ $post->title }} <small>
-            <i class="fa fa-arrow-circle-right"></i>
-            <a href="#">{{ $post->category->name }}</a></small>
+            <i class="fa fa-thumb-tack"></i>
+            Edit Post
+            <small><a href="#">New post</a></small>
         </h2>
 
 
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
+<div class="panel-heading">
 
+            <h2 class="panel-title">
+            {{ $post->title }}
+            <i class="fa fa-arrow-circle-right"></i>
+            <small>
+            <a href="#" class="no-decoration"><span class="label label-default">{{ $post->category->name }}</span></a>
+            </small>
+        </h2>
+      </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
@@ -63,14 +70,6 @@
         {{ link_to_route('posts.index', 'Return to all posts', [], array('class' => 'btn btn-primary')) }}
 
     </div>
-
-
-
-
-</div>
-</div>
-
-
 
 
 @stop

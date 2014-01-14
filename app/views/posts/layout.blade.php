@@ -1,13 +1,11 @@
-@extends('layouts.base')
+@extends('layouts.scaffold')
 
 @section('styles')
-
-
-    {{ HTML::style('vendors/chosen/chosen.css') }}
     @parent
-
+    {{ HTML::style('vendors/chosen/chosen.css') }}
 @stop
 
+@section('navbar') @stop
 @section('scripts')
 
     @parent

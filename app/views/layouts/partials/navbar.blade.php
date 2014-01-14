@@ -12,5 +12,18 @@
     </div>
     <div class="navbar-collapse collapse">
       {{ $menu }}
+
+      @if(Auth::check())
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <a href="{{ route('posts.index') }}">Admin</a>
+          </li>
+
+          <li><a href="{{ route('logout') }}">
+            <i class="fa fa-power-off"></i>
+            Logout
+          </a></li>
+        </ul>
+      @endif
     </div><!--/.nav-collapse -->
   </div>

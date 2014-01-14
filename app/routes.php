@@ -37,6 +37,7 @@ Route::get('/contact', array('as' => 'contact', function(){
 
 Route::match(array('GET', 'POST') ,'login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
+Route::get('logout', array('as' => 'logout', 'before' => 'auth', 'uses' => 'HomeController@logout'));
 
 Route::group(array('prefix' => 'blog'), function(){
 
@@ -86,19 +87,33 @@ View::composer('layouts.partials.navbar', function($view){
 View::composer('layouts.partials.admin_sidebar', function($view){
 
     $factory = new Knp\Menu\MenuFactory();
-    $menu = $factory->createItem('sidebar')->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
+    $menu = $factory->createItem('sidebar')
+                    ->setChildrenAttribute('class', 'sidebar-nav');
+    $menu->addChild('Home', array(
+        'uri' => URL::action('posts.index', [], false),
+        'label' => 'Dashboard',
+        'allow_safe_labels' => true,
+        'extras' => array('safe_label' => true)
+        ))
+                ->setAttribute('class', 'sidebar-brand');
     $menu->addChild('Posts', array('uri' => URL::action('posts.index', [], false)));
     $menu->addChild('Categories', array('uri' => URL::action('categories.index', [], false)));
     $menu->addChild('Users', array('uri' => URL::action('users.index', [], false )));
     $menu->addChild('Photos', array('uri' => URL::action('photos.index', [], false )));
     $menu->addChild('Portolios', array('uri' => URL::action('portfolios.index', [], false )));
     $menu->addChild('Tags', array('uri' => URL::action('tags.index', [], false)));
+    $menu->addChild('Contacts', array('uri' => '#'));
 
     $matcher = new Knp\Menu\Matcher\Matcher();
     $matcher->addVoter(new Knp\Menu\Matcher\Voter\UriVoter(Request::server('REQUEST_URI')));
 
     $renderer = new Knp\Menu\Renderer\ListRenderer($matcher);
-    $view->with('sidebar', $renderer->render($menu, array('currentClass' => 'active')));
+    $view->with('sidebar', $renderer->render($menu, array(
+        'currentClass' => 'active',
+        'allow_safe_labels' => true,
+        'extras' => array('safe_label' => true)
+
+        )));
 });
 ?>
 
