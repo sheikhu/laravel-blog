@@ -4,11 +4,12 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h1>
-            {{ $post->title }}
-        </h1>
-        <b>Category</b> <i class="fa fa-arrow-circle-right"></i>
-        {{ $post->category->name }}
+        <h2>
+            {{ $post->title }} <small>
+            <i class="fa fa-arrow-circle-right"></i>
+            <a href="#">{{ $post->category->name }}</a></small>
+        </h2>
+
 
         <div class="panel panel-default">
 

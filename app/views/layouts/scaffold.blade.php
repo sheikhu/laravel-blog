@@ -1,25 +1,4 @@
 @extends('layouts.base')
-
-<?php
-HTML::macro('listItem', function($params){
-
-
-    if( Request::is($params['pattern'].'*') ) {
-        $active = "active";
-    }
-    else {
-        $active = '';
-    }
-
-    if(isset($params['attr']['class']))
-        $params['attr']['class'] .= 'list-group-item ' . $active;
-    else
-        $params['attr']['class'] = 'list-group-item ' . $active;
-
-    return link_to($params['route'], $params['label'], $params['attr']);
-});
-
-?>
 @section('styles')
 
 
@@ -39,49 +18,10 @@ HTML::macro('listItem', function($params){
 </div>
 @endif
 @endforeach
-<div class="row">
+<div class="row-fluid">
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 aside">
-        <h1><a href="#"> Hello, Sheikhu </a></h1>
-
-        <div class="list-group">
-        {{ HTML::listItem(array(
-                'route'=>route('posts.index'),
-                'label' => 'Posts',
-                'attr' => array(),
-                'pattern' => 'posts'
-                ))
-        }}
-        {{ HTML::listItem(array(
-                'route'=>route('categories.index'),
-                'label' => 'Categories',
-                'attr' => array(),
-                'pattern' => 'categories'
-                ))
-        }}
-        {{ HTML::listItem(array(
-                'route'=>route('tags.index'),
-                'label' => 'Tags',
-                'attr' => array(),
-                'pattern' => 'tags'
-                ))
-        }}
-        {{ HTML::listItem(array(
-                'route'=>route('users.index'),
-                'label' => 'Users',
-                'attr' => array(),
-                'pattern' => 'users'
-                ))
-        }}
-
-        {{ HTML::listItem(array(
-                'route'=>route('photos.index'),
-                'label' => 'Photos',
-                'attr' => array(),
-                'pattern' => 'photos'
-                ))
-        }}
-
-    </div>
+        <h2><a href="#"> Hello, Sheikhu </a></h2>
+        @include('layouts.partials.admin_sidebar')
 </div>
 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
     @yield('content')
@@ -90,6 +30,8 @@ HTML::macro('listItem', function($params){
 </div>
 @stop
 
+@section('footer')
+@stop
 @section('scripts')
 
 @parent

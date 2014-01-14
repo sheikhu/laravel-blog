@@ -12,7 +12,7 @@
 
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             Category <i class="fa fa-arrow-circle-right fa-border"></i>
-            <a href="{{ route('HomeController@showByTag', $post->category->slug)}}">
+            <a href="{{ action('BlogController@showByCategory', $post->category->slug)}}">
             <span class="badge">{{ $post->category->name}}</span>
             </a>
         </div>

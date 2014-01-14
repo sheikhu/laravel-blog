@@ -12,11 +12,12 @@
   <!-- Bootstrap core CSS -->
 
   @section('styles')
+
   {{ HTML::style('bootstrap/css/bootstrap.css') }}
   {{ HTML::style('bootstrap/font-awesome/css/font-awesome.css') }}
   {{ HTML::style('vendors/summernote/dist/summernote.css')}}
   {{ HTML::style('vendors/redactor/redactor/redactor.css')}}
-
+  {{ HTML::style('css/site.css') }}
   <!-- include (codemirror.css, codemirror.js, xml.js, formatting.js) -->
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.css" />
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.min.css">
@@ -34,71 +35,28 @@
       <script src="../../assets/js/respond.min.js"></script>
       <![endif]-->
 
-      <style type="text/css">
-        body{
-          padding-top: 84px;
-          background-color: #F1F1F1;
-          /*background-image: url("{{ asset('images/bg.png') }} ");*/
-          font-size: 18px;
-          font-family: "Kreon", sans-serif;
-        }
-        #master-container{background-color: #FFF;}
-        .no-rounded{border-radius: 0px !important;}
-        .justify{text-align:justify;}
-
-        .first-block{
-          background: #73C47E;
-          background-image: url("{{ asset('images/bg3.png') }} ");
-          background-attachment: fixed;
-        }
-        .second-block{
-          background: #4191DD;
-          background-image: url("{{ asset('images/bg2.png') }} ");
-          background-attachment: fixed;
-        }
-
-        .bg-white{background-color: #FFF;}
-        .no-border{border-width: 0px 0px 0px 0px;}
-        .dark-bg{background-color: #0D7963;}
-
-        .bottom-border{ border-bottom: 1px solid #227293; }
-        /*.jumbotron h1{color: #FFF;}*/
-      </style>
     </head>
 
     <body>
 
 
-      <!-- Static navbar -->
-      <div class="navbar navbar-default navbar-fixed-top dark-bg">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ URL::to('/')}}">
-            <i class="fa fa-bullhorn"></i>
-            404 Ads</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#">Accueil</a></li>
-              <li class="active"><a href="#">Portfolio</a></li>
-              <li>
-                <a href="{{ route('posts.index')}}">
-                  Blog
-                </a>
-              </li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+    @section('navbar')
+      @include('layouts.partials.navbar')
+    @show
+
+
+
+
 
 
         <div id="master-container" class="container">
           @yield('container')
+
+          @section('footer')
+            @include('layouts.partials.footer')
+          @show
         </div> <!-- /container -->
+
 
 
     <!-- Bootstrap core JavaScript

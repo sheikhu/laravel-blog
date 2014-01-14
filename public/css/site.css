@@ -1,0 +1,72 @@
+body{
+  padding-top: 80px;
+  background-color: #F1F1F1;
+  /*background-image: url("../images/wall.jpg") ;*/
+  font-size: 18px;
+  font-family: "Kreon", "Ubuntu Mono", sans-serif;
+}
+#master-container{background-color: #FFF;}
+.no-rounded{border-radius: 0px !important;}
+.justify{text-align:justify;}
+
+.first-block{
+  background: #73C47E;
+  background-image: url("../images/bg3.png");
+  background-attachment: fixed;
+  color: #FFF;
+}
+.first-block p{
+  color: #FFF ;
+}
+.second-block{
+  background: #4191DD;
+  background-image: url("../images/bg2.png");
+  background-attachment: fixed;
+}
+.navbar-bg
+{
+  background: rgb(13, 121, 99);
+}
+.footer-block{
+  background: #282828;
+  background-attachment: fixed;
+}
+.footer-block p{ color: #FFF;}
+
+.bg-white{background-color: #FFF;}
+.no-border{border-width: 0px 0px 0px 0px;}
+.dark-bg{background-color: #0D7963;}
+.bg-blue{background-color: #64748F;}
+
+.bottom-border{ border-bottom: 1px solid #227293; }
+/*.jumbotron h1{color: #FFF;}*/
+.no-decoration:hover, .no-decorate-links a{text-decoration: none;}
+
+.nav > li > a:hover, .nav > li > a:active
+{
+  background-color: rgba(0,0,0,0.2);
+}
+
+
+.title-cool h1, .title-cool h2{
+  background-color: red;
+}
+
+.form-control:focus,textarea.form-control:focus,input[type="text"]:focus,input[type="password"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="time"]:focus,input[type="week"]:focus,input[type="number"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="color"]:focus,.uneditable-input:focus{
+  -webkit-box-shadow:none;
+  border-left: 6px solid #1ABC9C;
+  transition: 0.2s;
+  box-shadow:none
+}
+
+
+h1, h2,h3, h4, h5, h6
+{
+  font-family: 'Ubuntu Mono', serif;
+  font-weight: bold;
+}
+
+p{
+  font-family: 'Kreon', 'Ubuntu Mono', serif;
+
+}

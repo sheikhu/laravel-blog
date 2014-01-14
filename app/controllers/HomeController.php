@@ -20,19 +20,47 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function showPost($slug)
+	public function getIndex()
 	{
-		$post = Post::whereSlug($slug)->first();
-
-		return View::make('blog.blog-single', compact('post'));
+		$posts = Post::paginate(1);
+    	return View::make('home', ['posts' => $posts]);
 	}
 
-	public function showByTag($slug)
+	public function getPortfolio()
 	{
-		$posts = Tag::whereSlug($slug)->first()->posts()->paginate(1);
+		$jobs = Portfolio::all();
+		return View::make('jobs', compact('jobs'));
+	}
 
-		return View::make('home', compact('posts'));
+	public function login()
+	{
+		if(Request::getMethod() == 'POST')
+		{
+			$credentials = Input::only(array('username', 'password'));
+			$validator = Validator::make($credentials, User::$rules);
 
+			if($validator->passes())
+			{
+				if(Auth::attempt($credentials))
+				{
+					return Redirect::route('posts.index')
+								->with('message', 'Welcome '. Auth::user()->name);
+				} else {
+					return Redirect::route('login')
+							->withInput()
+							->withErrors($validator)
+							->with('message', 'Username and/or password invalid.');
+				}
+
+			} else {
+				return Redirect::route('login')
+							->withInput()
+							->withErrors($validator);
+
+			}
+		}
+
+		return View::make('auth.login');
 	}
 
 }

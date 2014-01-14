@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTagsTable extends Migration {
+class CreatePortfoliosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,15 @@ class CreateTagsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tags', function(Blueprint $table){
+		Schema::create('portfolios', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name');
-			$table->string('slug');
+			$table->string('titre');
+			$table->string('slug')->unique();
+			$table->text('description');
+			$table->timestamps();
 		});
-
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -27,7 +29,7 @@ class CreateTagsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tags');
+		Schema::drop('portfolios');
 	}
 
 }
