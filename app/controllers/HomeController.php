@@ -37,7 +37,7 @@ class HomeController extends BaseController {
 		if(Request::getMethod() == 'POST')
 		{
 			$credentials = Input::only(array('username', 'password'));
-			$validator = Validator::make($credentials, User::$rules);
+			$validator = Validator::make($credentials, User::$loginRules);
 
 			if($validator->passes())
 			{

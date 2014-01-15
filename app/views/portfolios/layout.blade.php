@@ -5,7 +5,7 @@
     {{ HTML::style('vendors/chosen/chosen.css') }}
 @stop
 
-@section('navbar') @stop
+
 @section('scripts')
     @parent
     {{ HTML::script('vendors/chosen/chosen.jquery.min.js') }}

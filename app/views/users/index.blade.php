@@ -1,4 +1,4 @@
-@extends('posts.layout')
+@extends('users.layout')
 
 @section('content')
         @include('users.list')

@@ -15,8 +15,7 @@ Route::get('portfolio', array('as' => 'portfolio', 'uses' => 'HomeController@get
 Route::match(array('GET', 'POST', 'PUT'), 'contact', array('as' => 'contact', 'uses' => 'HomeController@getContact'));
 
 Route::get('/test', array('as' => 'test', function(){
-
-    return URL::action('BlogController@index', [], false);
+    return User::all();
 }));
 
 Route::get('/', array('as' => 'home', function()
@@ -67,54 +66,11 @@ Route::resource('portfolios', 'PortfoliosController');
 });
 
 
-View::composer('layouts.partials.navbar', function($view){
-
-    $factory = new Knp\Menu\MenuFactory();
-    $menu = $factory->createItem('navbar')->setChildrenAttribute('class', 'nav navbar-nav');
-    $menu->addChild('Accueil', array('uri' => URL::action('home', [], false)));
-    $menu->addChild('Portfolio', array('uri' => '#portfolio'));
-    $menu->addChild('Blog', array('uri' => URL::action('blog.home', [], false)));
-    $menu->addChild('Contact', array('uri' => URL::action('contact', [], false )));
-
-    $matcher = new Knp\Menu\Matcher\Matcher();
-    $matcher->addVoter(new Knp\Menu\Matcher\Voter\UriVoter(Request::server('REQUEST_URI')));
-
-    $renderer = new Knp\Menu\Renderer\ListRenderer($matcher);
-    $view->with('menu', $renderer->render($menu, array('currentClass' => 'active')));
-});
+View::composer('layouts.partials.navbar', 'App\Composers\NavbarComposer');
 
 
-View::composer('layouts.partials.admin_sidebar', function($view){
 
-    $factory = new Knp\Menu\MenuFactory();
-    $menu = $factory->createItem('sidebar')
-                    ->setChildrenAttribute('class', 'sidebar-nav');
-    $menu->addChild('Home', array(
-        'uri' => URL::action('posts.index', [], false),
-        'label' => 'Dashboard',
-        'allow_safe_labels' => true,
-        'extras' => array('safe_label' => true)
-        ))
-                ->setAttribute('class', 'sidebar-brand');
-    $menu->addChild('Posts', array('uri' => URL::action('posts.index', [], false)));
-    $menu->addChild('Categories', array('uri' => URL::action('categories.index', [], false)));
-    $menu->addChild('Users', array('uri' => URL::action('users.index', [], false )));
-    $menu->addChild('Photos', array('uri' => URL::action('photos.index', [], false )));
-    $menu->addChild('Portolios', array('uri' => URL::action('portfolios.index', [], false )));
-    $menu->addChild('Tags', array('uri' => URL::action('tags.index', [], false)));
-    $menu->addChild('Contacts', array('uri' => '#'));
-
-    $matcher = new Knp\Menu\Matcher\Matcher();
-    $matcher->addVoter(new Knp\Menu\Matcher\Voter\UriVoter(Request::server('REQUEST_URI')));
-
-    $renderer = new Knp\Menu\Renderer\ListRenderer($matcher);
-    $view->with('sidebar', $renderer->render($menu, array(
-        'currentClass' => 'active',
-        'allow_safe_labels' => true,
-        'extras' => array('safe_label' => true)
-
-        )));
-});
+View::composer('layouts.partials.admin_sidebar', 'App\Composers\SidebarComposer');
 ?>
 
 

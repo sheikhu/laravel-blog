@@ -44,18 +44,16 @@ class UsersController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, User::$rules);
 
-		if ($validation->passes())
-		{
-			$this->user->create($input);
+		$this->user = new User($input);
 
+
+		if($this->user->save())
 			return Redirect::route('users.index');
-		}
 
 		return Redirect::route('users.create')
 			->withInput()
-			->withErrors($validation)
+			->withErrors($this->user->errors)
 			->with('message', 'There were validation errors.');
 	}
 

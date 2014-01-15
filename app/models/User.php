@@ -2,8 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use App\Models\BaseModel;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -19,8 +20,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	protected $fillable  = array('username', 'email', 'name', 'password');
 
 	public static $rules = array(
+		'username' => 'required',
+		'name' => 'required',
+		'email'    => 'required|email|unique:users,NULL',
+		'password' => 'required'
+		);
+
+	public static $loginRules = array(
 		'username' => 'required',
 		'password' => 'required'
 		);
@@ -59,5 +68,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('Post');
 	}
+
 
 }

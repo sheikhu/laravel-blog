@@ -1,6 +1,6 @@
-@extends('layouts.scaffold')
+@extends('users.layout')
 
-@section('container')
+@section('content')
 
 <h1>Create User</h1>
 
