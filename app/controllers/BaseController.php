@@ -2,6 +2,13 @@
 
 class BaseController extends Controller {
 
+	protected $flashes;
+
+	public function __construct()
+	{
+
+		$this->flashes = new Illuminate\Support\MessageBag();
+	}
 	/**
 	 * Setup the layout used by the controller.
 	 *

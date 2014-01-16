@@ -6,15 +6,16 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ URL::to('/')}}">
-      <i class="fa fa-bullhorn"></i>
-      404 Ads</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      {{ $menu }}
+    <a class="navbar-brand" href="{{ route('home') }}">
 
-      @if(Auth::check())
-        {{ $admin_menu}}
-      @endif
-    </div><!--/.nav-collapse -->
+      <i class="fa fa-share fa-lg"></i>
+    </a>
   </div>
+  <div class="navbar-collapse collapse">
+    {{ $menu }}
+
+    @if(Auth::check())
+    {{ $admin_menu}}
+    @endif
+  </div><!--/.nav-collapse -->
+</div>

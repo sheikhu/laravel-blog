@@ -15,9 +15,19 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->beforeFilter('csrf', array('on' => 'post'));
+	}
+
 	public function showWelcome()
 	{
-		return View::make('hello');
+		// return View::make('hello');
+
+		$this->flashes->add('success', 'Flash test');
+
+		return Redirect::route('home')->with('messages' , $this->flashes);
 	}
 
 	public function getIndex()
@@ -32,20 +42,36 @@ class HomeController extends BaseController {
 		return View::make('jobs', compact('jobs'));
 	}
 
+	public function contact()
+	{
+		if(Request::getMethod() == 'GET')
+			return View::make('contact');
+
+		// Post request
+
+	}
+
 	public function login()
 	{
-		if(Request::getMethod() == 'POST')
-		{
-			$credentials = Input::only(array('username', 'password'));
+
+		if(Request::getMethod() == 'GET')
+			return View::make('auth.login');
+
+
+
+			$credentials = Input::only(array('email', 'password'));
 			$validator = Validator::make($credentials, User::$loginRules);
 
 			if($validator->passes())
 			{
 				if(Auth::attempt($credentials))
 				{
+					$this->flashes->add('success', 'Welcome ' . Auth::user()->name);
 					return Redirect::route('posts.index')
-								->with('message', 'Welcome '. Auth::user()->name);
+								->with('messages', $this->flashes);
 				} else {
+
+
 					return Redirect::route('login')
 							->withInput()
 							->withErrors($validator)
@@ -58,15 +84,14 @@ class HomeController extends BaseController {
 							->withErrors($validator);
 
 			}
-		}
 
-		return View::make('auth.login');
 	}
 
 
 	public function logout()
 	{
 		Auth::logout();
+
 		return Redirect::route('home');
 	}
 

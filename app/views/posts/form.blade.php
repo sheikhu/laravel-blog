@@ -2,21 +2,8 @@
 
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      @if (Session::has('message'))
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error !</strong> {{ Session::get('message') }}
-    </div>
-    @endif
-</div>
-</div>
-
-
-
-<div class="row">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div class="form-group @if($errors->has('title'))has-error@endif">
+    <div class="form-group @if($errors->has('title'))has-success@endif">
 
         {{ Form::label('title', 'Title') }}
         {{ Form::text('title', null, ['class' => 'form-control']) }}
@@ -68,7 +55,7 @@
 </div>
 
 
-<div class="form-group">
+<div class="form-group @if($errors->has('image'))has-error@endif">
     <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         {{ Form::label('image', 'Image')}}
@@ -77,6 +64,8 @@
         {{ Form::file('image')}}
         </div>
     </div>
+    {{ $errors->first('image', '<span class="help-block">:message</span>
+            ')}}
 </div>
 
 <div class="form-group">

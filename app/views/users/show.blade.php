@@ -39,34 +39,18 @@
 
 </div>
 
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <h1 class="entry-title">Posts</h1>
 
-    <div class="table-responsive">
-        @if ($user->posts)
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($user->posts as $post)
-                <tr>
-                    <td>{{ $post->title }}</td>
-                    <td>
-                        <a title="show" class="btn btn-default" href="{{ route('posts.show', array($post->id))}}">
-
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        @endif
+    <div class="list-group">
+      @foreach ($user->posts as $post)
+      <a title="show" class="list-group-item"
+      href="{{ route('posts.show', array($post->id))}}">
+      {{ $post->title }}
+      </a>
+      @endforeach
     </div>
+
 </div>
 </div>
 

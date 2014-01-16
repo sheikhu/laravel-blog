@@ -3,14 +3,19 @@ body{
 }
 
 .navbar-bg{
-  background-color: #1C1C1C;
+  background-color: #202232;
 }
 
-.navbar-nav > li > a:hover
+.navbar-nav > li > a:hover, .navbar-nav > li.active > a
 {
-  background-color: rgba(0,0,0,0.3) !important;
-
+  background-color: #1C1E2D !important;
 }
+
+.navbar-nav > .active > a:hover
+{
+  background-color: #252737;
+}
+
 #wrapper {
   padding-left: 250px;
   transition: all 0.4s ease 0s;
@@ -20,7 +25,7 @@ body{
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background: #1C1C1C;
+  background: #252737;
   /*background-image: url('../images/bg3.png');*/
   position: fixed;
   height: 100%;
@@ -53,10 +58,15 @@ body{
   text-decoration: none;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li a:hover, .sidebar-nav li:not(:first-child).active a {
   color: #fff;
   background: rgba(0,0,0,0.3);
   text-decoration: none;
+}
+
+.sidebar-nav li:not(:first-child).active a
+{
+  font-size: 24px;
 }
 
 .sidebar-nav li a:active,

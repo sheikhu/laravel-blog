@@ -70,3 +70,39 @@ p{
   font-family: 'Kreon', 'Ubuntu Mono', serif;
 
 }
+
+
+.link-facebook
+{
+  color: #3B5998;
+}
+.link-facebook:hover
+{
+  color: #314879;
+}
+
+.link-twitter{
+  color: #54C5F4;
+}
+.link-twitter:hover{
+  color: #4CB4E0;
+}
+
+.link-youtube{
+  color: #D9411F;
+}
+.link-youtube:hover{
+  color: #D55437;
+}
+
+.link-github{
+  color: #000;
+}
+
+.link-rss{
+  color: #F78B1C;
+}
+
+.link-rss:hover{
+  color: #E5811C;
+}

@@ -1,12 +1,17 @@
 @extends('layouts.base')
 
+
 @section('container')
 <div class="jumbotron bg-white">
   <div class="container">
     <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <img src="{{ asset('images/self.jpg') }}" alt="" class="img-responsive">
-      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-code fa-stack-1x fa-inverse"></i>
+</span>
+</div>
       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
         <h2 class="entry-title">Cherchez vous un développeur web ?</h2>
         <p class="justify">

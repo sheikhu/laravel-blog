@@ -9,10 +9,11 @@
 @section('scripts')
 
     @parent
+
     {{ HTML::script('vendors/chosen/chosen.jquery.min.js') }}
 
     <script>
-    $(function () {
+
 
         $('.select_multiple').chosen({allow_single_deselect:true});
         $('select.chosen').chosen({allow_single_deselect:true});
@@ -24,7 +25,7 @@
             if(confirm($(this).data('confirm')))
                 $(this).parent('form').submit();
         });
-    });
+
 
     </script>
 

@@ -16,17 +16,17 @@
 
             @if (Session::has('message'))
                 <div class="form-group">
-                <div class="alert alert-danger">
+                <div class="alert alert-danger fade in">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <strong>Error !</strong> {{ Session::get('message')}}
                 </div>
             </div>
             @endif
 
-            <div class="form-group @if($errors->has('username')) has-error@endif">
-                {{ Form::label('username', 'Username')}}
-                {{ Form::text('username', Input::old('username'), array('class' => 'form-control')) }}
-                {{ $errors->first('username', '<span class="help-block">:message</span>') }}
+            <div class="form-group @if($errors->has('email')) has-error@endif">
+                {{ Form::label('email', 'Email')}}
+                {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                {{ $errors->first('email', '<span class="help-block">:message</span>') }}
             </div>
 
             <div class="form-group @if($errors->has('password')) has-error@endif">
@@ -47,6 +47,7 @@
             </button>
 
             </div>
+            {{ Form::token() }}
         </form>
     </div>
 </div>

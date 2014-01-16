@@ -6,10 +6,12 @@
     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
         {{ Form::open(array('method' => 'POST', 'class' => 'form-vertical'))}}
         <legend>
-            <h1>
-                Contactez moi
-            </h1>
-        </legend>
+
+                <h1><span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                </span>Contactez moi !</h1>
+            </legend>
 
         <div class="row">
             <div class="col-xs-6">

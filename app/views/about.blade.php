@@ -25,14 +25,13 @@
 </div>
 </div>
 
-<div class="row-fluid">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <a href="#" class="thumbnail">
-            <img src="http://whatatimeline.com/covers/fb_profile_cover_13173327520f7.jpg" alt="" class="img-responsive">
-        </a>
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<div class="row first-block">
 
+    <h2>Compétences</h2>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <a href="#" class="thumbnail">
+      <img class="img-responsive" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR-bXm4Z1jpfZSReZTFh3oosFBPCVMGWgX4AXA2w73QrdibeKNA" alt=""/>
+    </a>
     </div>
 </div>
 @stop

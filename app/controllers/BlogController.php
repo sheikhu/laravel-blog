@@ -31,7 +31,7 @@ class BlogController extends BaseController {
 	{
 		$posts = Category::whereSlug($slug)->first()->posts()->paginate(1);
 
-		return View::make('home', compact('posts'));
+		return View::make('blog.home', compact('posts'));
 
 	}
 

@@ -39,36 +39,39 @@
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     <h3>Réseaux sociaux</h3>
     <div class="no-decorate-links">
-      <a href="#">
+      <a href="#" class="link-rss">
         <span class="fa-stack fa-lg">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
         </span>
       </a>
+      <a class="link-facebook" href="#">
       <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
       </span>
+      </a>
 
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-      </span>
+      <a href="#" class="link-twitter">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
 
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-      </span>
+      <a class="link-github" href="#">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
 
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-      </span>
-
-      <span class="fa-stack fa-lg">
+      <a href="#" class="link-youtube">
+        <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
       </span>
+      </a>
     </div>
   </div>
 </div>

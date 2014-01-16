@@ -17,14 +17,16 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php",
-	        "app/helpers"
+		        "app/helpers"
 		],
 
-		"psr-0" : {
-			"Knp\\Menu\\": "vendor/knplabs/knp-menu/src/",
-			"App":	"app"
-		}
+        "psr-0" : {
+        	"Knp\\Menu\\": "vendor/knplabs/knp-menu/src/",
+           	"App":  "app/src"
+        }
 	},
+	"bin": ["bin/boris"],
+
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan optimize"

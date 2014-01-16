@@ -10,13 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('portfolio', array('as' => 'portfolio', 'uses' => 'HomeController@getPortfolio'));
+Route::get('portfolio', array(
+    'as' => 'portfolio', 'uses' => 'HomeController@getPortfolio'));
 
-Route::match(array('GET', 'POST', 'PUT'), 'contact', array('as' => 'contact', 'uses' => 'HomeController@getContact'));
+Route::match(array('GET', 'POST', 'PUT'), 'contact', array(
+    'as' => 'contact',
+    'uses' => 'HomeController@getContact'));
 
-Route::get('/test', array('as' => 'test', function(){
-    return User::all();
-}));
+Route::get('/test', array('as' => 'test', 'uses' => 'HomeController@showWelcome'));
 
 Route::get('/', array('as' => 'home', function()
 {
@@ -29,10 +30,7 @@ Route::get('/me', array('as' => 'me', function(){
     return View::make('about');
 }));
 
-Route::get('/contact', array('as' => 'contact', function(){
-
-    return View::make('contact');
-}));
+Route::match(array('GET', 'POST') ,'contact', array('as' => 'contact', 'uses' => 'HomeController@contact'));
 
 Route::match(array('GET', 'POST') ,'login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
