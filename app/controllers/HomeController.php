@@ -23,17 +23,13 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		// return View::make('hello');
-
-		$this->flashes->add('success', 'Flash test');
-
-		return Redirect::route('home')->with('messages' , $this->flashes);
+		return View::make('hello');
 	}
 
 	public function getIndex()
 	{
 		$posts = Post::paginate(1);
-    	return View::make('home', ['posts' => $posts]);
+		return View::make('home', ['posts' => $posts]);
 	}
 
 	public function getPortfolio()
@@ -47,6 +43,20 @@ class HomeController extends BaseController {
 		if(Request::getMethod() == 'GET')
 			return View::make('contact');
 
+		$data = Input::only(array('name', 'email', 'message'));
+
+		$contact = new Contact($data);
+
+		if($contact->save())
+		{
+			return Redirect::route('home')->with('message', 'Message sent.');
+		}
+
+		return Redirect::route('contact')->withInput()
+						->withErrors($contact->errors)
+						->with('message', 'There were validation errors.');
+
+
 		// Post request
 
 	}
@@ -58,32 +68,32 @@ class HomeController extends BaseController {
 			return View::make('auth.login');
 
 
+		$credentials = Input::only(array(Config::get('auth.login_field', 'username'), 'password'));
 
-			$credentials = Input::only(array('email', 'password'));
-			$validator = Validator::make($credentials, User::$loginRules);
+		$validator = Validator::make($credentials, User::$loginRules);
 
-			if($validator->passes())
+		if($validator->passes())
+		{
+			if(Auth::attempt($credentials))
 			{
-				if(Auth::attempt($credentials))
-				{
-					$this->flashes->add('success', 'Welcome ' . Auth::user()->name);
-					return Redirect::route('posts.index')
-								->with('messages', $this->flashes);
-				} else {
-
-
-					return Redirect::route('login')
-							->withInput()
-							->withErrors($validator)
-							->with('message', 'Username and/or password invalid.');
-				}
-
+				$this->flashes->add('success', 'Welcome ' . Auth::user()->name);
+				return Redirect::route('posts.index')
+				->with('messages', $this->flashes);
 			} else {
-				return Redirect::route('login')
-							->withInput()
-							->withErrors($validator);
 
+
+				return Redirect::route('login')
+				->withInput()
+				->withErrors($validator)
+				->with('message', 'Username and/or password invalid.');
 			}
+
+		} else {
+			return Redirect::route('login')
+			->withInput()
+			->withErrors($validator);
+
+		}
 
 	}
 

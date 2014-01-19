@@ -17,7 +17,11 @@ Route::match(array('GET', 'POST', 'PUT'), 'contact', array(
     'as' => 'contact',
     'uses' => 'HomeController@getContact'));
 
-Route::get('/test', array('as' => 'test', 'uses' => 'HomeController@showWelcome'));
+Route::get('/test', array('as' => 'test', function(){
+
+  return Tag::all();
+
+}));
 
 Route::get('/', array('as' => 'home', function()
 {
@@ -50,25 +54,27 @@ Route::group(array('prefix' => 'blog'), function(){
 
 Route::group(array('prefix' => '/', 'before' => 'auth'), function(){
 
-Route::resource('posts', 'PostsController');
+    Route::resource('posts', 'PostsController');
 
-Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController');
 
-Route::resource('categories', 'CategoriesController');
+    Route::resource('categories', 'CategoriesController');
 
-Route::resource('tags', 'TagsController');
+    Route::resource('tags', 'TagsController');
 
-Route::resource('photos', 'PhotosController');
+    Route::resource('photos', 'PhotosController');
 
-Route::resource('portfolios', 'PortfoliosController');
+    Route::resource('portfolios', 'PortfoliosController');
+    Route::resource('contacts', 'ContactsController');
 });
 
 
 View::composer('layouts.partials.navbar', 'App\Composers\NavbarComposer');
 
 
-
 View::composer('layouts.partials.admin_sidebar', 'App\Composers\SidebarComposer');
+
+
 ?>
 
 

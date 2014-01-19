@@ -5,6 +5,7 @@ class TagsTableSeeder extends Seeder {
     public function run()
     {
         // Uncomment the below to wipe the table clean before populating
+        DB::table('taggables')->truncate();
         DB::table('tags')->truncate();
 
         $tags = [
@@ -24,7 +25,7 @@ class TagsTableSeeder extends Seeder {
             Tag::create($tag);
         }
 
-        $this->command->info('Tags table seeded !');
+        // $this->command->info('Tags table seeded !');
     }
 
 }

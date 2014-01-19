@@ -32,7 +32,7 @@ class PostsTableSeeder extends Seeder {
             Post::find($id)->tags()->save(Tag::find($tag->id));
         }
 
-        $this->command->info('Posts table seeded !');
+        // $this->command->info('Posts table seeded !');
 	}
 
 }

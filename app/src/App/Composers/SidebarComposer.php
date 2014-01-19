@@ -48,7 +48,7 @@ class SidebarComposer
             ));
 
         $menu->addChild('Contacts', array(
-            'uri' => '#'
+            'uri' => route('contacts.index')
             ));
 
 

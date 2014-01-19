@@ -16,7 +16,7 @@ class CreateTaggablesTable extends Migration {
 
 			$table->increments('id');
 			$table->morphs('taggable');
-			$table->string('tag_id');
+			$table->integer('tag_id')->unsigned();
 
 			$table->foreign('tag_id')
 					->references('id')
@@ -35,7 +35,7 @@ class CreateTaggablesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('taggables');
+		Schema::dropIfExists('taggables');
 	}
 
 }

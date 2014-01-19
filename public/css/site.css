@@ -25,7 +25,7 @@ body{
 }
 .navbar-bg
 {
-  background: rgb(13, 121, 99);
+  background: rgba(13, 121, 99, 0.9);
 }
 .footer-block{
   background: #282828;

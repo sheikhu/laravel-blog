@@ -29,16 +29,12 @@ class UriVoter implements VoterInterface
         }
 
 
-
-        $match = $item->getUri();
-
-        if(strpos($this->uri, $item->getUri()) !== false)
+        if ($item->getUri() === $this->uri)
             return true;
 
 
-        if ($item->getUri() === $this->uri) {
+        if(strpos($this->uri, $item->getUri().'/') !== false)
             return true;
-        }
 
         return null;
     }

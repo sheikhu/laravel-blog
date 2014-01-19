@@ -9,25 +9,28 @@ class UsersTableSeeder extends Seeder {
 
 		$users = [
             [
-            'username' => 'admin',
-            'name'     => 'Admin',
-            'email'    => 'admin@gmail.com',
-            'password' =>  Hash::make('admin')
+                'username'   => 'admin',
+                'name'       => 'Admin',
+                'email'      => 'admin@gmail.com',
+                'password'   =>  Hash::make('admin'),
+                'created_at' => new Datetime,
+                'updated_at' => new Datetime
             ],
             [
-            'username' => 'sheikhu',
-            'name'     => 'Sheikhu',
-            'email'    => 'sheikhu02@gmail.com',
-            'password' =>  Hash::make('admin')
+                'username' => 'sheikhu',
+                'name'     => 'Sheikhu',
+                'email'    => 'sheikhu02@gmail.com',
+                'password' =>  Hash::make('admin'),
+                'created_at' => new Datetime,
+                'updated_at' => new Datetime
             ]
         ];
 
 		// Uncomment the below to run the seeder
-		foreach ($users as $user) {
-            User::create($user);
-        }
+            DB::table('users')->insert($users);
 
-        $this->command->info('Users table seeded !');
+
+        // $this->command->info('Users table seeded !');
 	}
 
 }

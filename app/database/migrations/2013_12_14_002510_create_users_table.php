@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateImagesTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateImagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('images', function(Blueprint $table){
-
+		Schema::create('users', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name', 128);
-			$table->string('slug')->unique();
-			$table->string('url')->unique();
-			$table->morphs('owner');
+			$table->string('username')->unique();
+			$table->string('email')->unique();
+			$table->string('name');
+			$table->string('password');
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -30,7 +30,7 @@ class CreateImagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('images');
+		Schema::dropIfExists('users');
 	}
 
 }

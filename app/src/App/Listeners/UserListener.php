@@ -6,7 +6,7 @@ namespace App\Listeners;
 
     public function creating($user)
     {
-        $user->password = Hash::make($user->password);
+        $user->password = \Hash::make($user->password);
     }
 
     public function updating($model){

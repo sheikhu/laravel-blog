@@ -1,41 +1,11 @@
-@extends('layouts.scaffold')
+@extends('users.layout')
 
 @section('content')
 
 <h1>Edit User</h1>
-{{ Form::model($user, array('method' => 'PATCH', 'route' => array('users.update', $user->id))) }}
-	<ul>
-        <li>
-            {{ Form::label('username', 'Username:') }}
-            {{ Form::text('username') }}
-        </li>
-
-        <li>
-            {{ Form::label('email', 'Email:') }}
-            {{ Form::text('email') }}
-        </li>
-
-        <li>
-            {{ Form::label('name', 'Name:') }}
-            {{ Form::text('name') }}
-        </li>
-
-        <li>
-            {{ Form::label('password', 'Password:') }}
-            {{ Form::text('password') }}
-        </li>
-
-		<li>
-			{{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('users.show', 'Cancel', $user->id, array('class' => 'btn')) }}
-		</li>
-	</ul>
-{{ Form::close() }}
-
-@if ($errors->any())
-	<ul>
-		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
-	</ul>
-@endif
-
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    @include('users.form', array('method' => 'PATCH', 'route' => array('users.update', $user->id)))
+    </div>
+</div>
 @stop

@@ -4,7 +4,6 @@
         <ul class="nav nav-pills nav-stacked">
           @foreach (Category::all() as $category)
           <?php $count = count($category->posts) ?>
-
           <li>
             <a href="{{ route('show_by_category', $category->slug) }}">
               <span class="badge pull-right">{{ count($category->posts) }}</span>

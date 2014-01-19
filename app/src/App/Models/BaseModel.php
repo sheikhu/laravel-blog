@@ -21,14 +21,20 @@ class BaseModel extends Eloquent
 
     public function validate()
     {
-        $validation = Validator::make($this->attributes, static::$rules);
+        $validation = Validator::make(\Input::all(), static::$rules);
 
 
         if($validation->passes())
             return true;
 
         $this->errors = $validation->errors();
+
         return false;
+    }
+
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }
 

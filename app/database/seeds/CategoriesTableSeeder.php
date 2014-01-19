@@ -23,7 +23,7 @@ class CategoriesTableSeeder extends Seeder {
             Category::create($category);
         }
 
-        $this->command->info('Categories table seeded !');
+        // $this->command->info('Categories table seeded !');
     }
 
 }

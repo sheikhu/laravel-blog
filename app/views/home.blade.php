@@ -27,7 +27,25 @@
 </div>
 </div>
 
+<div class="row">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <h2 class="text-center">Blog</h2>
+    <div class="list-group">
+      @foreach (Post::orderBy('created_at', 'DESC')->take(3)->get() as $post)
+        <a href="{{ route('blog.show',array($post->slug) )}}" class="list-group-item">
+         <i class="fa fa-pencil"></i> {{ $post->title }}
+        </a>
+      @endforeach
+    </div>
+  </div>
 
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <h2 class="text-center">Compétences</h2>
+  </div>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <h2 class="text-center">Works</h2>
+  </div>
+</div>
 <div class="row first-block">
 
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">

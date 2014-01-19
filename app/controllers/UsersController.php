@@ -33,7 +33,7 @@ class UsersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('users.create');
+		return View::make('users.create', ['user' => new User]);
 	}
 
 	/**

@@ -5,6 +5,9 @@
             {{ $errors->first('name', '<span class="help-block">:message</span>
         ') }}
     </div>
-    {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+
+    <button type="submit" class="btn btn-success">
+    <i class="fa fa-check"></i> Valider
+    </button>
 
 {{ Form::close() }}

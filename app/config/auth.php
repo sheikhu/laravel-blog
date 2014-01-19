@@ -42,6 +42,8 @@ return array(
 
 	'table' => 'users',
 
+	'login_field' => 'email',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Password Reminder Settings
