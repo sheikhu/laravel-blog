@@ -21,7 +21,7 @@ class BaseModel extends Eloquent
 
     public function validate()
     {
-        $validation = Validator::make(\Input::all(), static::$rules);
+        $validation = Validator::make($this->getAttributes(), static::$rules);
 
 
         if($validation->passes())
@@ -35,6 +35,11 @@ class BaseModel extends Eloquent
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    public function isValid()
+    {
+        return $this->validate();
     }
 }
 

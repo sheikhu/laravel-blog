@@ -26,9 +26,9 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function getIndex()
+	public function index()
 	{
-		$posts = Post::paginate(1);
+		$posts = Post::paginate(Config::get('settings.posts_per_page', 1));
 		return View::make('home', ['posts' => $posts]);
 	}
 

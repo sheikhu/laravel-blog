@@ -6,7 +6,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="{{ route('home') }}">
+    <a class="navbar-brand @if(Request::is('/')) active@endif" href="{{ route('home') }}">
 
       <i class="fa fa-share fa-lg"></i>
     </a>
@@ -15,7 +15,7 @@
     {{ $menu }}
 
     @if(Auth::check())
-    {{ $admin_menu}}
+      {{ $admin_menu}}
     @endif
   </div><!--/.nav-collapse -->
 </div>

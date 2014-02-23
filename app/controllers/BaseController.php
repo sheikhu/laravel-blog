@@ -6,7 +6,6 @@ class BaseController extends Controller {
 
 	public function __construct()
 	{
-
 		$this->flashes = new Illuminate\Support\MessageBag();
 	}
 	/**

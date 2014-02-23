@@ -10,35 +10,41 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('portfolio', array(
-    'as' => 'portfolio', 'uses' => 'HomeController@getPortfolio'));
+Route::get('portfolio', array('as' => 'portfolio', 'uses' => 'HomeController@getPortfolio'));
 
-Route::match(array('GET', 'POST', 'PUT'), 'contact', array(
+Route::match(array('GET', 'POST'), 'contact', array(
     'as' => 'contact',
-    'uses' => 'HomeController@getContact'));
+    'uses' => 'HomeController@getContact')
+);
 
-Route::get('/test', array('as' => 'test', function(){
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
-  return Tag::all();
-
-}));
-
-Route::get('/', array('as' => 'home', function()
-{
-    $posts = Post::paginate(1);
-    return View::make('home', ['posts' => $posts]);
-}));
-
-Route::get('/me', array('as' => 'me', function(){
+Route::get('/about', array('as' => 'me', function(){
 
     return View::make('about');
 }));
+
+
+Route::get('/profile', ['as' => 'profile', 'before' => 'auth', function(){
+
+    return View::make('users.profile');
+
+}]);
 
 Route::match(array('GET', 'POST') ,'contact', array('as' => 'contact', 'uses' => 'HomeController@contact'));
 
 Route::match(array('GET', 'POST') ,'login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
 Route::get('logout', array('as' => 'logout', 'before' => 'auth', 'uses' => 'HomeController@logout'));
+
+Route::model('author', 'User');
+
+Route::bind('author', function($value, $route)
+{
+    return User::where('username', $value)->firstOrFail();
+});
+
+
 
 Route::group(array('prefix' => 'blog'), function(){
 
@@ -50,7 +56,11 @@ Route::group(array('prefix' => 'blog'), function(){
 
     Route::get('category/{tag}', array('as' => 'show_by_category', 'uses' => 'BlogController@showByCategory'));
 
+    Route::get('author/{author}', array('as' => 'show_by_author', 'uses' => 'BlogController@showAuthor'));
+
 });
+
+
 
 Route::group(array('prefix' => '/', 'before' => 'auth'), function(){
 
@@ -65,6 +75,7 @@ Route::group(array('prefix' => '/', 'before' => 'auth'), function(){
     Route::resource('photos', 'PhotosController');
 
     Route::resource('portfolios', 'PortfoliosController');
+
     Route::resource('contacts', 'ContactsController');
 });
 
@@ -74,7 +85,20 @@ View::composer('layouts.partials.navbar', 'App\Composers\NavbarComposer');
 
 View::composer('layouts.partials.admin_sidebar', 'App\Composers\SidebarComposer');
 
+View::composer('layouts.partials.sidebar', 'Site\Composers\BlogSidebarComposer');
 
+
+Route::get('/test', function()
+{
+    return View::make('temp');
+});
+
+
+Route::get('/ajax', function(){
+
+    return Post::all();
+
+})
 ?>
 
 

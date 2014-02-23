@@ -3,7 +3,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Listeners\UserListener;
-use User;
+use App\Listeners\PostsListener;
+use App\Listeners\ImageListener;
+use User, Post, Image;
 
 class UserEventsProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class UserEventsProvider extends ServiceProvider
     public function boot()
     {
         User::observe(new UserListener);
+        Post::observe(new PostsListener);
+        Image::observe(new ImageListener);
     }
 }
  ?>

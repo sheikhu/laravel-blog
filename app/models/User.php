@@ -70,5 +70,9 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return $this->hasMany('Post');
 	}
 
+	public function gravatarLink($size = 32, $default = 'mm')
+	{
+		return "http://www.gravatar.com/avatar/".md5(strtolower(trim($this->email)))."?s=$size&d=$default";
+	}
 
 }

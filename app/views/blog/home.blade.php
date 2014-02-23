@@ -5,11 +5,16 @@
   <div class="row first-block">
 
     <div class="col-md-9 blog-main">
-      @foreach ($posts as $post)
-      @include('blog.post-preview')
-      @endforeach
+      @if (count($posts))
+        @foreach ($posts as $post)
+        @include('blog.post-preview')
+        @endforeach
 
-      {{ $posts->links() }}
+        {{ $posts->links() }}
+      @else
+        <h3>There are no posts. <small><a href="{{ route('blog.home') }}">See all posts.</a></small></h3>
+      @endif
+
     </div><!-- /.blog-main -->
 
     @section('sidebar')

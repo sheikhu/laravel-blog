@@ -24,18 +24,20 @@ class UriVoter implements VoterInterface
 
     public function matchItem(ItemInterface $item)
     {
-        if (null === $this->uri || null === $item->getUri()) {
-            return null;
-        }
+        if (null === $this->uri || null === $item->getUri())
+            return false;
 
 
         if ($item->getUri() === $this->uri)
+        {
+            $item->setUri('#');
             return true;
+        }
 
 
         if(strpos($this->uri, $item->getUri().'/') !== false)
             return true;
 
-        return null;
+        return false;
     }
 }

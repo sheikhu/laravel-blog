@@ -9,7 +9,9 @@ class BlogController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('blog.home', ['posts' => Post::with('category')->paginate(1)]);
+		$posts = Post::orderBy('created_at', 'DESC')->paginate(Config::get('settings.posts_per_page', 2));
+
+        return View::make('blog.home', compact('posts'));
 	}
 
 	public function showPost($slug)
@@ -21,18 +23,23 @@ class BlogController extends BaseController {
 
 	public function showByTag($slug)
 	{
-		$posts = Tag::whereSlug($slug)->first()->posts()->paginate(1);
+		$posts = Tag::whereSlug($slug)->first()->posts()->paginate(Config::get('settings.post_per_page', 2));
 
-		return View::make('home', compact('posts'));
-
+		return View::make('blog.home', compact('posts'));
 	}
 
 	public function showByCategory($slug)
 	{
-		$posts = Category::whereSlug($slug)->first()->posts()->paginate(1);
+		$posts = Category::whereSlug($slug)->first()->posts()->paginate(Config::get('settings.post_per_page', 2));
 
 		return View::make('blog.home', compact('posts'));
+	}
 
+	public function showAuthor(User $author)
+	{
+		$posts = $author->posts()->paginate(Config::get('settings.post_per_page', 2));
+
+		return View::make('blog.home', compact('posts'));
 	}
 
 }

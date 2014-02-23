@@ -5,7 +5,7 @@
         </a>
     </h1>
     <p class="blog-post-meta">
-        {{ date('m d, Y', $post->created_at->timestamp) }} by <a href="#">{{ $post->user->name }}</a>
+        {{ date(' d-m-Y', $post->created_at->timestamp) }} by <a href="{{ route('show_by_author', $post->user->username)}}">{{ $post->user->name }}</a>
     </p>
     <div class="row">
 
@@ -34,3 +34,4 @@
     {{ $post->content }}
 </p>
 </div><!-- /.blog-post -->
+

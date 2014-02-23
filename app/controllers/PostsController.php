@@ -11,6 +11,7 @@ class PostsController extends BaseController {
 
 	public function __construct(Post $post)
 	{
+		parent::__construct();
 		$this->post = $post;
 	   	$this->beforeFilter('csrf', array('on'=>'post'));
 	}
@@ -105,9 +106,9 @@ class PostsController extends BaseController {
 		{
 			$post = $this->post->find($id);
 			$post->update($input);
+			$this->flashes->add('success', 'Post updated.');
 
-			return Redirect::route('posts.show', $id)
-						->with('success', 'Post updated.');
+			return Redirect::route('posts.show', $id)->with('messages', $this->flashes);
 		}
 
 		return Redirect::route('posts.edit', $id)

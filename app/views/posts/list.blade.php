@@ -21,7 +21,6 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Category</th>
-                <th>Created At</th>
                 <th>Last Update</th>
                 <th></th>
             </tr>
@@ -33,14 +32,13 @@
                 <td>{{{ $post->title }}}</td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->category->name }}</td>
-                <td> {{ date('d-m-Y', $post->created_at->timestamp)}} </td>
                 <td> {{ date('d-m-Y', $post->updated_at->timestamp)}} </td>
                 <td>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-primary">
+                      <button type="button" class="btn btn-primary btn-sm">
                           <i class="fa fa-cogs"></i>
                       </button>
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>

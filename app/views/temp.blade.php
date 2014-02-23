@@ -1,5 +1,8 @@
 @extends('layouts.base')
-
+@section('styles')
+  @parent
+  <link rel="stylesheet" href="{{ asset('vendors/mscroll.min.css') }}">
+@stop
 @section('content')
 <div class="container">
 
@@ -137,7 +140,7 @@
 
     Lorem ipsum Adipisicing quis ut nostrud cupidatat pariatur fugiat Ut dolore sed incididunt Ut consequat do et consequat anim laboris Duis proident eu commodo adipisicing id sunt qui ad consequat irure pariatur consequat fugiat nisi ex anim ad sit do ad quis fugiat ea eiusmod laborum anim ex tempor anim quis nulla ea incididunt ex nulla magna incididunt qui deserunt anim proident cupidatat pariatur nulla est quis adipisicing id ut commodo Ut minim dolor reprehenderit occaecat incididunt anim commodo culpa aliqua officia aliquip est quis laborum esse nostrud consequat aute aute pariatur sint id elit enim amet ea dolore ut dolor id qui Duis voluptate et non consequat et consequat dolore proident sed ut mollit ut dolore tempor ut magna nulla ullamco ut nulla consectetur voluptate deserunt laboris fugiat sed voluptate ullamco nostrud labore elit ut occaecat do enim reprehenderit ea et aute est est.
     <p>
-        <a class="btn btn-primary btn-lg"><i class="fa fa-download"></i> Get it now</a>
+        <a id="get-it" class="btn btn-primary btn-lg"><i class="fa fa-download"></i> Get it now</a>
       </p>
   </div>
 
@@ -160,15 +163,18 @@
     </form>
 </div>
 
-  <div class="row-fluid">
+  <div class="row">
     <?php $i = 1 ;?>
 
     @while($i < 10)
     <div class="col-md-4">
-      <div class="panel panel-default no-rounded">
+      <div class="panel panel-info no-rounded">
         <div class="panel-heading">
           <i class="fa fa-check-circle fa-2x"></i>
           Panel heading without title
+        </div>
+        <div class="pull-left" style="margin:5px;">
+          <img src="http://www.gravatar.com/avatar/sdsd?d=mm&s=100" alt="" class="img-circle">
         </div>
         <div class="panel-body justify">
           Lorem ipsum Pariatur ad Ut id irure magna ut cillum fugiat id esse amet in in Excepteur incididunt et commodo pariatur in sunt est magna enim qui mollit occaecat.
@@ -176,12 +182,12 @@
         <div class="panel-footer">
 
           <div class="btn-group">
-            <button type="button" class="fa fa-check btn btn-default"></button>
+            <button type="button" class="fa fa-check btn btn-success"></button>
+            <button type="button" class="fa fa-ban btn btn-default"></button>
           </div>
           <div class="btn-group pull-right">
-            <button type="button" class="fa fa-facebook btn btn-primary"></button>
-            <button type="button" class="fa fa-twitter btn btn-primary"></button>
-            <button type="button" class="fa fa-instagram btn btn-danger"></button>
+            <button type="button" class="fa fa-facebook btn btn-info"></button>
+            <button type="button" class="fa fa-twitter btn btn-info"></button>
           </div>
 
         </div>
@@ -190,7 +196,7 @@
 
     @if( ($i % 3 == 0) )
       </div>
-      <div class="row-fluid">
+      <div class="row">
     @endif
     <?php $i++; ?>
     @endwhile
@@ -198,3 +204,35 @@
       </div>
 
     @endsection
+
+
+@section('scripts')
+  @parent
+  <script src="{{ asset('vendors/mscroll.jquery.js') }}" type="text/javascript"></script>
+  <script>
+    $(function () {
+
+      $('.tweets').mCustomScrollbar();
+
+      $(document).ajaxStart(function() {
+        console.log('Ajax start');
+      });
+
+      $(document).ajaxComplete(function() {
+        console.log('Ajax Complete');
+      });
+
+      $('#get-it').on('click', function(e){
+        e.preventDefault();
+
+        var url = '{{ url("/ajax")}}';
+
+        $.getJSON(url, function(json, textStatus) {
+            alert('ok');
+        });
+      });
+
+
+    }); // Finish on load
+  </script>
+@stop

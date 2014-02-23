@@ -2,10 +2,12 @@
 
 
 @section('container')
-<div class="jumbotron bg-white">
+<div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+
 
 <span class="fa-stack fa-4x">
   <i class="fa fa-circle fa-stack-2x"></i>
@@ -31,7 +33,7 @@
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     <h2 class="text-center">Blog</h2>
     <div class="list-group">
-      @foreach (Post::orderBy('created_at', 'DESC')->take(3)->get() as $post)
+      @foreach ($posts as $post)
         <a href="{{ route('blog.show',array($post->slug) )}}" class="list-group-item">
          <i class="fa fa-pencil"></i> {{ $post->title }}
         </a>
@@ -39,42 +41,35 @@
     </div>
   </div>
 
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
   <h2 class="text-center">Compétences</h2>
   </div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-  <h2 class="text-center">Works</h2>
-  </div>
+
 </div>
 <div class="row first-block">
 
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   <h3>Test <small> - Symfony 2</small></h3>
     <a href="#" class="thumbnail">
       <img src="{{ asset('images/jobc.jpg') }}" alt="" class="img-responsive">
     </a>
   </div>
 
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   <h3>Test <small> - Symfony 2</small></h3>
     <a href="#" class="thumbnail">
       <img src="{{ asset('images/wallx.jpg') }}" alt="" class="img-responsive">
     </a>
   </div>
 
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
   <h3>Test <small> - Symfony 2</small></h3>
     <a href="#" class="thumbnail">
       <img src="{{ asset('images/wally.jpg') }}" alt="" class="img-responsive">
     </a>
   </div>
 
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-  <h3>Test <small> - Symfony 2</small></h3>
-    <a href="#" class="thumbnail">
-      <img src="{{ asset('images/jobd.jpg') }}" alt="" class="img-responsive">
-    </a>
-  </div>
 
 </div><!-- /.row-fluid -->
 

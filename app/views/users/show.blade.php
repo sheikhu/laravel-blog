@@ -5,7 +5,9 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
     <h1 class="entry-title"> {{ $user->name }}</h1>
+    <img class="img-circle" src="{{$user->gravatarLink(128, 'mm')}}" alt="Avatar">
 
+    <img src="" alt="">
         <table class="table table-striped table-responsive">
             <thead>
                 <tr>

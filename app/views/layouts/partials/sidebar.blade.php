@@ -2,7 +2,7 @@
       <div>
         <h3 class="text-center">Categories</h3>
         <ul class="nav nav-pills nav-stacked">
-          @foreach (Category::all() as $category)
+          @foreach ($categories as $category)
           <?php $count = count($category->posts) ?>
           <li>
             <a href="{{ route('show_by_category', $category->slug) }}">
@@ -16,7 +16,7 @@
       <div>
         <h3 class="text-center">Tags</h3>
         <ul class="nav nav-pills nav-stacked">
-          @foreach (Tag::all() as $tag)
+          @foreach ($tags as $tag)
           <?php $count = count($tag->posts) ?>
 
             <li>

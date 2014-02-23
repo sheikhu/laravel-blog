@@ -14,13 +14,22 @@
     @include('layouts.partials.admin_sidebar')
   </div>
 
-  <!-- Page content -->
+  <div class="container">
+    <!-- Page content -->
   <div id="page-content-wrapper">
-    @include('layouts.partials.flashes')
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-md-offset-1">
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        @include('layouts.partials.flashes')
+      </div>
+
+    <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       @yield('content')
     </div>
 
+    </div>
+  </div>
   </div>
 
 </div>

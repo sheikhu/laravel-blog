@@ -5,7 +5,11 @@ body{
   font-size: 18px;
   font-family: "Kreon", "Ubuntu Mono", sans-serif;
 }
-#master-container{background-color: #FFF;}
+#master-container{
+  background-color: #F1F1F1;
+  padding: 0;
+  /*max-width: 95%;*/
+}
 .no-rounded{border-radius: 0px !important;}
 .justify{text-align:justify;}
 
@@ -99,10 +103,27 @@ p{
   color: #000;
 }
 
+.link-github:hover{
+  color: #000;
+}
+
 .link-rss{
   color: #F78B1C;
 }
 
 .link-rss:hover{
   color: #E5811C;
+}
+
+.blog-post-title
+{
+  font-style: italic;
+}
+.blog-post-title a:hover {
+  text-decoration: none;
+}
+
+
+.contact-form .form-control{
+  background-color: rgba(0,0,0,0.3);
 }

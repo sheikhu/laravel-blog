@@ -6,6 +6,7 @@
         @endif
     </h1>
     <p class="blog-post-meta">
+        <i class="fa fa-calendar"></i>
         {{ date('m d, Y', $post->created_at->timestamp) }} by
         <span class="label label-info">
             {{ $post->user->name }}
@@ -15,8 +16,8 @@
 
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             Category <i class="fa fa-arrow-circle-right"></i>
-            <a href="{{ action('BlogController@showByCategory', $post->category->slug)}}">
-            <span class="badge">{{ $post->category->name}}</span>
+            <a href="{{ route('show_by_category', $post->category->slug)}}">
+            <span class="badge">{{ $post->category->name }}</span>
             </a>
         </div>
 

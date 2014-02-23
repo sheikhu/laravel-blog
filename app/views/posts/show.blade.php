@@ -8,6 +8,10 @@
             <small><a href="#">New post</a></small>
         </h2>
 
+        <h4>
+            <span class="label label-info">Created at</span>
+            <small>{{ date('d-m-Y', $post->created_at->timestamp)}}</small>
+        </h4>
 
         <div class="panel panel-primary">
 <div class="panel-heading">
@@ -16,7 +20,7 @@
             {{ $post->title }}
             <i class="fa fa-arrow-circle-right"></i>
             <small>
-            <a href="#" class="no-decoration"><span class="label label-default">{{ $post->category->name }}</span></a>
+            <a href="{{ route('categories.show', $post->category->id)}}" class="no-decoration"><span class="label label-default">{{ $post->category->name }}</span></a>
             </small>
         </h2>
       </div>
@@ -30,8 +34,8 @@
 
                     @if ($post->image)
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <a href="{{ asset($post->image->url)}}" class="thumbnail">
-                            <img class="img-responsive" src="{{ asset($post->image->url) }}" alt="">
+                    <a href="{{ asset($post->image->path())}}" class="thumbnail">
+                            <img class="img-responsive" src="{{ asset($post->image->path()) }}" alt="">
                         </a>
                     </div>
                     @endif

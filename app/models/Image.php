@@ -14,5 +14,20 @@ class Image extends Eloquent {
         return $this->morphTo('owner');
     }
 
+    public function path()
+    {
+        return Config::get('settings.publicUploadPath') . '/' . $this->name;
+    }
+
+    public function getRootPath()
+    {
+        return Config::get('settings.uploadPath') . '/' . $this->name;
+    }
+
+    public function webPath()
+    {
+        return $this->path();
+    }
+
 
 }

@@ -14,7 +14,19 @@
 
   <div id="sidebar" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     <h3>Tweets</h3>
-    <ul class="nav nav-pills nav-stacked" style="height:120px; overflow-x:auto;">
+    <ul class="nav nav-pills nav-stacked tweets" style="height:120px; overflow-x:auto;">
+      <li>
+        <a href="#">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit
+          <span class="text-warning">#test</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit
+          <span class="text-warning">#test</span>
+        </a>
+      </li>
       <li>
         <a href="#">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit
