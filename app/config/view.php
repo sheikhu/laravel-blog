@@ -13,7 +13,9 @@ return array(
 	|
 	*/
 
-	'paths' => array(__DIR__.'/../views'),
+	'paths' => array(
+		__DIR__.'/../views',
+		),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,6 +28,6 @@ return array(
 	|
 	*/
 
-	'pagination' => 'pagination.simple',
+	'pagination' => 'pagination::slider-3',
 
 );

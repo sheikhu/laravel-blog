@@ -1,6 +1,9 @@
 <?php
+namespace Blog\Controllers;
 
-class BlogController extends BaseController {
+use Config, Post, View;
+
+class BlogController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +12,10 @@ class BlogController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::orderBy('created_at', 'DESC')->paginate(Config::get('settings.posts_per_page', 2));
+		// Switch pagination type
+		Config::set('view.pagination', 'pagination.simple');
 
+		$posts = Post::orderBy('created_at', 'DESC')->paginate(Config::get('blog::posts_per_page', 2));
         return View::make('blog.home', compact('posts'));
 	}
 

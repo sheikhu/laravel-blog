@@ -4,7 +4,7 @@ namespace App\Composers;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\Matcher\Matcher;
 use App\Menu\Matcher\Voter\UriVoter;
-use Knp\Menu\Renderer\ListRenderer;
+use App\Menu\Renderer\ListRenderer;
 use URL, Request, Auth;
 
 

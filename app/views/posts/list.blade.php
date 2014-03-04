@@ -29,39 +29,29 @@
         <tbody>
             @foreach ($posts as $post)
             <tr>
-                <td>{{{ $post->title }}}</td>
+                <td>{{{ Str::words($post->title, 6) }}}</td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->category->name }}</td>
                 <td> {{ date('d-m-Y', $post->updated_at->timestamp)}} </td>
                 <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-primary btn-sm">
-                          <i class="fa fa-cogs"></i>
-                      </button>
-                      <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>{{ link_to_route('posts.show', 'Voir', array($post->id)) }}</li>
-                        <li>{{ link_to_route('posts.edit', 'Edit', array($post->id)) }}</li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+
+                <div class="btn-group">
+                    {{ link_to_route('posts.show', 'Voir', array($post->id), array('class' => 'btn btn-info btn-sm')) }}
+                    {{ link_to_route('posts.edit', 'Edit', array($post->id), array('class' => 'btn btn-default btn-sm')) }}
                 </div>
-            </td>
-            <td>
-                {{ Form::open(array('method' => 'DELETE', 'route' => array('posts.destroy', $post->id), 'class' => 'hide', 'id' => 'post_'.$post->id)) }}
-                {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                {{ Form::close() }}
-            </td>
+                </td>
+                <td>
+                    {{ Form::open(array('method' => 'DELETE', 'route' => array('posts.destroy', $post->id), 'class' => 'hide', 'id' => 'post_'.$post->id)) }}
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                    {{ Form::close() }}
+                </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 </div>
 
+{{ $posts->links()}}
 @else
 There are no posts
 @endif

@@ -4,6 +4,7 @@ body{
   /*background-image: url("../images/wall.jpg") ;*/
   font-size: 18px;
   font-family: "Kreon", "Ubuntu Mono", sans-serif;
+
 }
 #master-container{
   background-color: #F1F1F1;
@@ -19,11 +20,11 @@ body{
   background-attachment: fixed;
   color: #FFF;
 }
-.first-block p{
-  color: #FFF ;
+.first-block p, p{
+  color: #616161 ;
 }
 .second-block{
-  background: #4191DD;
+  /*background: #4191DD;*/
   background-image: url("../images/bg2.png");
   background-attachment: fixed;
 }
@@ -41,6 +42,7 @@ body{
 .no-border{border-width: 0px 0px 0px 0px;}
 .dark-bg{background-color: #0D7963;}
 .bg-blue{background-color: #64748F;}
+.bg-blue-dark{background-color: #192437;}
 
 .bottom-border{ border-bottom: 1px solid #227293; }
 /*.jumbotron h1{color: #FFF;}*/
@@ -64,10 +66,12 @@ body{
 }
 
 
-h1, h2,h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6
 {
-  font-family: 'Ubuntu Mono', serif;
+  font-family: open-sans, 'Ubuntu Mono', serif;
+  /*color: #0d7963;*/
   font-weight: bold;
+  font-size: 24px;
 }
 
 p{
@@ -115,9 +119,9 @@ p{
   color: #E5811C;
 }
 
-.blog-post-title
+.blog-post-title a
 {
-  font-style: italic;
+  color: #0d7963;
 }
 .blog-post-title a:hover {
   text-decoration: none;

@@ -2,13 +2,14 @@
 
 @section('container')
 
-  <div class="row first-block">
+  <div class="row">
 
     <div class="col-md-9 blog-main">
       @if (count($posts))
         @foreach ($posts as $post)
         @include('blog.post-preview')
         @endforeach
+
 
         {{ $posts->links() }}
       @else

@@ -19,9 +19,10 @@ class ImageListener
 
     }
 
-    public function saved($image)
+    public function delete($image)
     {
-
+        if(File::exists($image->getRootPath()))
+            File::delete($image->getRootPath());
     }
 
     private function handleFileUpload(UploadedFile $image, Image $entity)

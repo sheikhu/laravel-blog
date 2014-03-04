@@ -1,5 +1,5 @@
 <?php
-namespace Site\Composers;
+namespace Blog\Composers;
 
 use Category, Tag;
 

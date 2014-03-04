@@ -2,6 +2,13 @@
 
 class PhotosController extends BaseController {
 
+
+
+	public function __construct()
+	{
+		parent::__construct();
+	   	$this->beforeFilter('csrf', array('on'=>'post'));
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -73,7 +80,15 @@ class PhotosController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$photo = Image::find(intval($id));
+
+		//$status = $photo->delete();
+
+		if(Request::ajax())
+			return Response::json(array('status' => true));
+
+		$this->flashes->add('success', 'Image deleted.');
+		return Redirect::route('photos.index')->with('messages', $this->flashes);
 	}
 
 }

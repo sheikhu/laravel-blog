@@ -18,6 +18,8 @@
   {{ HTML::style('vendors/summernote/dist/summernote.css')}}
   {{ HTML::style('vendors/redactor/redactor/redactor.css')}}
   {{ HTML::style('css/site.css') }}
+  {{ HTML::script('//use.edgefonts.net/open-sans.js') }}
+  {{ HTML::script('//use.edgefonts.net/source-code-pro.js') }}
 
   @show
 

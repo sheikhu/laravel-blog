@@ -109,6 +109,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 	    'Intervention\Image\ImageServiceProvider',
 	    'App\Providers\UserEventsProvider',
+	    'Blog\Providers\BlogServiceProvider',
 
 	),
 
@@ -175,7 +176,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-	    'Imager' => 'Intervention\Image\Facades\Image'
+	    'Imager' 		  => 'Intervention\Image\Facades\Image'
 
 	),
 

@@ -1,6 +1,8 @@
 <?php
 
-class Post extends Eloquent {
+use App\Models\BaseModel;
+
+class Post extends BaseModel {
 
     protected $guarded = array();
 

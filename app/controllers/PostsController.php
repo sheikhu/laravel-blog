@@ -23,7 +23,7 @@ class PostsController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = $this->post->all();
+		$posts = $this->post->paginate(5);
 
 		return View::make('posts.index', compact('posts'));
 	}
@@ -50,6 +50,7 @@ class PostsController extends BaseController {
 
 		if ($validation->passes())
 		{
+			$this->flashes->add('success', 'Post Created.');
 			$this->post = $this->post->create($input);
 			return Redirect::route('posts.index');
 		}

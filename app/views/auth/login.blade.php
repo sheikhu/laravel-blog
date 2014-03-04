@@ -4,10 +4,9 @@
 @section('container')
 
 <div class="row">
-    {{ HTML::col(4, 4)}}
-    <form action="" method="POST" role="form" class="form-horizontal">
+    <div class="col-lg-4 col-lg-offset-4 ">
 
-
+    {{ Form::open( array('route' => 'login', 'method' => 'POST', 'class' => 'form-horizontal') ) }}
         <div class="form-group">
             <h1>
                 <span class="fa-stack fa-lg">

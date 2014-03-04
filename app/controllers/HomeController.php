@@ -32,6 +32,11 @@ class HomeController extends BaseController {
 		return View::make('home', ['posts' => $posts]);
 	}
 
+    public function about()
+    {
+        return View::make('about');
+    }
+
 	public function getPortfolio()
 	{
 		$jobs = Portfolio::all();

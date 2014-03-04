@@ -8,6 +8,8 @@ class BaseModel extends Eloquent
 
     public $errors;
 
+    public static $rules = array();
+
     public static function boot()
     {
         parent::boot();

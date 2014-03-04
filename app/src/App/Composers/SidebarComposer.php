@@ -4,7 +4,7 @@ namespace App\Composers;
 use Knp\Menu\MenuFactory;
 use Knp\Menu\Matcher\Matcher;
 use App\Menu\Matcher\Voter\UriVoter;
-use Knp\Menu\Renderer\ListRenderer;
+use App\Menu\Renderer\ListRenderer;
 use URL, Request;
 
 class SidebarComposer
@@ -35,7 +35,7 @@ class SidebarComposer
             'uri' => URL::action('users.index')
             ));
 
-        $menu->addChild('Photos', array(
+        $menu->addChild('Images', array(
             'uri' => URL::action('photos.index')
             ));
 
@@ -61,7 +61,9 @@ class SidebarComposer
             'allow_safe_labels' => true,
             'extras' => array('safe_label' => true)
 
-            )));
+            )
+        )
+        );
     }
 }
 ?>
